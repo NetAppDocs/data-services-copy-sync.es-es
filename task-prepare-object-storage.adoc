@@ -1,0 +1,42 @@
+---
+sidebar: sidebar 
+permalink: task-prepare-object-storage.html 
+keywords: prepare data broker, data broker, object storage, sync, scanner, configure scanner, bluexp, copy and sync 
+summary: 'Si planea sincronizar datos de un almacenamiento de objetos a otro (por ejemplo, Amazon S3 a Azure Blob) mediante NetApp Copy and Sync, deberá preparar el grupo de agentes de datos antes de crear la relación de sincronización.' 
+---
+= Prepare un agente de datos para sincronizar datos entre el almacenamiento de objetos en NetApp Copy and Sync
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Si planea sincronizar datos de un almacenamiento de objetos a otro (por ejemplo, Amazon S3 a Azure Blob) en NetApp Copy and Sync, debe preparar el grupo de agentes de datos antes de crear la relación de sincronización.
+
+.Acerca de esta tarea
+Para preparar el grupo de intermediarios de datos, deberá modificar la configuración del escáner.  Si no modifica la configuración, es posible que observe problemas de rendimiento en esta relación de sincronización.
+
+.Antes de empezar
+El grupo de intermediarios de datos que utiliza para sincronizar datos de un almacenamiento de objetos a otro solo debe administrar este tipo de relaciones de sincronización.  Si el grupo de intermediarios de datos administra un tipo diferente de relación de sincronización (por ejemplo, NFS a NFS o almacenamiento de objetos a SMB), el rendimiento de esas relaciones de sincronización podría verse afectado negativamente.
+
+.Pasos
+. link:task-login-copyandsync.html["Iniciar sesión en Copiar y sincronizar"] .
+. En Copiar y sincronizar, seleccione *Administrar intermediarios de datos*.
+. Seleccionarimage:icon-settings.png["Una captura de pantalla del icono de configuración"]
+. Actualizar la configuración del escáner:
++
+.. Cambie *Concurrencia del escáner* a *1*.
+.. Cambie el *Límite de procesos del escáner* a *1*.
+
+
+. Seleccione *Unificar configuración*.
+
+
+.Resultado
+Copiar y sincronizar actualiza la configuración del grupo de intermediarios de datos.
+
+.¿Que sigue?
+Ahora puede crear la relación de sincronización entre el almacenamiento de objetos utilizando el grupo de intermediarios de datos que acaba de configurar.

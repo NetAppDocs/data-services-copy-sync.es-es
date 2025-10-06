@@ -1,0 +1,9 @@
+= Corrección de errores
+:allow-uri-read: 
+
+
+
+
+=== Corrección de errores
+
+Actualizamos Copy and Sync y el agente de datos para corregir algunos errores.  La nueva versión del corredor de datos es 1.0.53.

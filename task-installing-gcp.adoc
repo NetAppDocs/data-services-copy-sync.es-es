@@ -1,0 +1,176 @@
+---
+sidebar: sidebar 
+permalink: task-installing-gcp.html 
+keywords: data broker, install, gcp, google, networking, permissions, regions, install data broker in gcp, install in gcp, deploy in gcp, deploy data broker in gcp, install data broker in google, install in google, deploy in google, deploy data broker in google, networking requirements, port, ports, 443, port 443, ntp, network time protocol, gcp data broker, service account 
+summary: Cuando cree un nuevo agente de datos, elija la opción Google Cloud Data Broker para implementar el software del agente de datos en una nueva instancia de máquina virtual en una VPC.  NetApp Copy and Sync lo guía a través del proceso de instalación, pero los requisitos y pasos se repiten en esta página para ayudarlo a prepararse para la instalación. 
+---
+= Cree un nuevo agente de datos en Google Cloud para NetApp Copy and Sync
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Cuando crea un nuevo grupo de agente de datos para NetApp Copy and Sync, elija Google Cloud Platform para implementar el software del agente de datos en una nueva instancia de máquina virtual en una VPC de Google Cloud.  NetApp Copy and Sync lo guía a través del proceso de instalación, pero los requisitos y pasos se repiten en esta página para ayudarlo a prepararse para la instalación.
+
+También tiene la opción de instalar el agente de datos en un host Linux existente en la nube o en sus instalaciones. link:task-installing-linux.html["Más información"] .
+
+
+
+== Regiones de Google Cloud compatibles
+
+Se admiten todas las regiones.
+
+
+
+== Privilegios de root
+
+El software del intermediario de datos se ejecuta automáticamente como root en el host Linux.  Ejecutarse como root es un requisito para las operaciones del agente de datos.  Por ejemplo, para montar acciones.
+
+
+
+== Requisitos de red
+
+* El agente de datos necesita una conexión a Internet saliente para poder sondear Copy and Sync en busca de tareas a través del puerto 443.
++
+Cuando Copy and Sync implementa el agente de datos en Google Cloud, crea un grupo de seguridad que habilita la comunicación saliente requerida.
+
++
+Si necesita limitar la conectividad saliente, consultelink:reference-networking.html["la lista de puntos finales con los que se pone en contacto el agente de datos"] .
+
+* NetApp recomienda configurar el origen, el destino y el agente de datos para utilizar un servicio de Protocolo de tiempo de red (NTP).  La diferencia de tiempo entre los tres componentes no debe exceder los 5 minutos.
+
+
+
+
+== Permisos necesarios para implementar el agente de datos en Google Cloud
+
+Asegúrese de que el usuario de Google Cloud que implementa el agente de datos tenga los siguientes permisos:
+
+[source, yaml]
+----
+- compute.networks.list
+- compute.regions.list
+- deploymentmanager.deployments.create
+- deploymentmanager.deployments.delete
+- deploymentmanager.operations.get
+- iam.serviceAccounts.list
+----
+
+
+== Permisos necesarios para la cuenta de servicio
+
+Al implementar el agente de datos, debe seleccionar una cuenta de servicio que tenga los siguientes permisos:
+
+[source, yaml]
+----
+- logging.logEntries.create
+- resourcemanager.projects.get
+- storage.buckets.get
+- storage.buckets.list
+- storage.objects.create
+- storage.objects.delete
+- storage.objects.get
+- storage.objects.getIamPolicy
+- storage.objects.list
+- storage.objects.setIamPolicy
+- storage.objects.update
+- iam.serviceAccounts.signJwt
+- pubsub.subscriptions.consume
+- pubsub.subscriptions.create
+- pubsub.subscriptions.delete
+- pubsub.subscriptions.list
+- pubsub.topics.attachSubscription
+- pubsub.topics.create
+- pubsub.topics.delete
+- pubsub.topics.list
+- pubsub.topics.setIamPolicy
+- storage.buckets.update
+- cloudkms.cryptoKeys.list
+- cloudkms.keyRings.list
+----
+Notas:
+
+. El permiso "iam.serviceAccounts.signJwt" solo es necesario si planea configurar el agente de datos para utilizar una bóveda externa de HashiCorp.
+. Los permisos "pubsub.*" y "storage.buckets.update" solo son necesarios si planea habilitar la configuración de sincronización continua en una relación de sincronización de Google Cloud Storage a otra ubicación de almacenamiento en la nube. link:task-creating-relationships.html#settings["Obtenga más información sobre la opción Sincronización continua"] .
+. Los permisos "cloudkms.cryptoKeys.list" y "cloudkms.keyRings.list" solo son necesarios si planea usar una clave KMS administrada por el cliente en un depósito de Google Cloud Storage de destino.
+
+
+
+
+== Crear el agente de datos
+
+Hay algunas formas de crear un nuevo corredor de datos.  Estos pasos describen cómo instalar un agente de datos en Google Cloud cuando se crea una relación de sincronización.
+
+.Pasos
+. link:task-login-copyandsync.html["Iniciar sesión en Copiar y sincronizar"] .
+. Seleccione *Crear nueva sincronización*.
+. En la página *Definir relación de sincronización*, elija un origen y un destino y seleccione *Continuar*.
++
+Complete los pasos hasta llegar a la página *Data Broker Group*.
+
+. En la página *Grupo de corredores de datos*, seleccione *Crear corredor de datos* y luego seleccione *Google Cloud Platform*.
++
+image:screenshot-google.png["Una captura de pantalla de la página del agente de datos que le permite elegir entre un agente de datos de AWS, Azure, Google Cloud y On-Prem."]
+
+. Ingrese un nombre para el agente de datos y seleccione *Continuar*.
+. Si se le solicita, inicie sesión con su cuenta de Google.
++
+El formulario es propiedad de Google y está alojado por esta empresa. Sus credenciales no se proporcionan a NetApp.
+
+. Seleccione un proyecto y una cuenta de servicio y luego elija una ubicación para el agente de datos, incluso si desea habilitar o deshabilitar una dirección IP pública.
++
+Si no habilita una dirección IP pública, deberá definir un servidor proxy en el siguiente paso.
+
++
+image:screenshot_data_broker_gcp.png["Una captura de pantalla que muestra la información necesaria para implementar un agente de datos en Google Cloud."]
+
+. Especifique una configuración de proxy, si se requiere un proxy para el acceso a Internet en la VPC.
++
+Si se requiere un proxy para acceder a Internet, entonces el proxy debe estar en Google Cloud y usar la misma cuenta de servicio que el agente de datos.
+
+. Una vez que el agente de datos esté disponible, seleccione *Continuar* en Copiar y sincronizar.
++
+La instancia tarda aproximadamente entre 5 y 10 minutos en implementarse.  Puede supervisar el progreso desde Copiar y sincronizar, que se actualiza automáticamente cuando la instancia está disponible.
+
+. Complete las páginas del asistente para crear la nueva relación de sincronización.
+
+
+.Resultado
+Implementó un agente de datos en Google Cloud y creó una nueva relación de sincronización.  Puede utilizar este agente de datos con relaciones de sincronización adicionales.
+
+
+
+== Proporcionar permisos para usar buckets en otros proyectos de Google Cloud
+
+Cuando crea una relación de sincronización y elige Google Cloud Storage como origen o destino, Copiar y sincronizar le permite elegir entre los depósitos que la cuenta de servicio del agente de datos tiene permisos para usar.  De forma predeterminada, esto incluye los depósitos que están en el _mismo_ proyecto que la cuenta de servicio del agente de datos.  Pero puedes elegir depósitos de _otros_ proyectos si proporcionas los permisos necesarios.
+
+.Pasos
+. Abra la consola de Google Cloud Platform y cargue el servicio Cloud Storage.
+. Seleccione el nombre del depósito que desea utilizar como origen o destino en una relación de sincronización.
+. Seleccione *Permisos*.
+. Seleccione *Agregar*.
+. Introduzca el nombre de la cuenta de servicio del agente de datos.
+. Seleccione un rol que proporcione<<Permisos necesarios para la cuenta de servicio,los mismos permisos que se muestran arriba>> .
+. Seleccione *Guardar*.
+
+
+.Resultado
+Cuando configura una relación de sincronización, ahora puede elegir ese depósito como origen o destino en la relación de sincronización.
+
+
+
+== Detalles sobre la instancia de VM del agente de datos
+
+Copiar y sincronizar crea un agente de datos en Google Cloud utilizando la siguiente configuración.
+
+Compatibilidad con Node.js:: v21.2.0
+Tipo de máquina:: n2-estándar-4
+vCPU:: 4
+RAM:: 15 GB
+Sistema operativo:: Rocky Linux 9,0
+Tamaño y tipo de disco:: Disco duro pd estándar de 20 GB
+

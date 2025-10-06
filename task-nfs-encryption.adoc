@@ -1,0 +1,139 @@
+---
+sidebar: sidebar 
+permalink: task-nfs-encryption.html 
+keywords: encryption, in flight, data in flight, in-flight, data-in-flight, nfs, initiator, listener, port 
+summary: Si su empresa tiene políticas de seguridad estrictas, sincronice datos entre servidores NFS en diferentes redes utilizando cifrado de datos en tránsito. 
+---
+= Sincronice datos NFS mediante el cifrado de datos en tránsito en NetApp Copy and Sync
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Si su empresa tiene políticas de seguridad estrictas, puede sincronizar datos NFS mediante el cifrado de datos en tránsito en NetApp Copy and Sync.  Esta característica es compatible desde un servidor NFS a otro servidor NFS y desde Azure NetApp Files a Azure NetApp Files.
+
+Por ejemplo, es posible que desee sincronizar datos entre dos servidores NFS que estén en redes diferentes.  O tal vez necesite transferir datos de forma segura en Azure NetApp Files entre subredes o regiones.
+
+
+
+== Cómo funciona el cifrado de datos en tránsito
+
+El cifrado de datos en tránsito cifra los datos NFS cuando se envían a través de la red entre dos intermediarios de datos.  La siguiente imagen muestra una relación entre dos servidores NFS y dos intermediarios de datos:
+
+image:diagram_nfs_encryption.gif["Un diagrama que muestra dos servidores NFS y dos corredores de datos.  Los datos fluyen desde el servidor NFS de origen a un agente de datos de origen, momento en el que se cifran los datos.  Luego, los datos se envían al agente de datos de destino y luego al servidor NFS de destino."]
+
+Un agente de datos funciona como _iniciador_.  Cuando llega el momento de sincronizar datos, envía una solicitud de conexión al otro agente de datos, que es el _listener_.  Ese agente de datos escucha solicitudes en el puerto 443.  Puede utilizar un puerto diferente, si es necesario, pero asegúrese de verificar que el puerto no esté siendo utilizado por otro servicio.
+
+Por ejemplo, si sincroniza datos desde un servidor NFS local a un servidor NFS basado en la nube, puede elegir qué agente de datos escucha las solicitudes de conexión y cuál las envía.
+
+Así es como funciona el cifrado en vuelo:
+
+. Después de crear la relación de sincronización, el iniciador inicia una conexión cifrada con el otro agente de datos.
+. El agente de datos de origen cifra los datos de la fuente mediante TLS 1.3.
+. Luego envía los datos a través de la red al agente de datos de destino.
+. El agente de datos de destino descifra los datos antes de enviarlos al destino.
+. Después de la copia inicial, Copiar y sincronizar sincroniza los datos modificados cada 24 horas.  Si hay datos para sincronizar, el proceso comienza cuando el iniciador abre una conexión cifrada con el otro agente de datos.
++
+Si prefiere sincronizar datos con más frecuencia,link:task-managing-relationships.html#change-the-settings-for-a-sync-relationship["Puedes cambiar el horario después de crear la relación"] .
+
+
+
+
+
+== Versiones de NFS compatibles
+
+* Para los servidores NFS, el cifrado de datos en tránsito es compatible con las versiones 3, 4.0, 4.1 y 4.2 de NFS.
+* Para Azure NetApp Files, el cifrado de datos en tránsito es compatible con las versiones 3 y 4.1 de NFS.
+
+
+
+
+== Limitación del servidor proxy
+
+Si crea una relación de sincronización cifrada, los datos cifrados se envían a través de HTTPS y no se pueden enrutar a través de un servidor proxy.
+
+
+
+== Lo que necesitarás para empezar
+
+Asegúrese de tener lo siguiente:
+
+* Dos servidores NFS que se encuentranlink:reference-requirements.html["Requisitos de origen y destino"] o Azure NetApp Files en dos subredes o regiones.
+* Las direcciones IP o nombres de dominio completos de los servidores.
+* Ubicaciones de red para dos corredores de datos.
++
+Puede seleccionar un agente de datos existente, pero debe funcionar como iniciador.  El agente de datos del oyente debe ser un agente de datos _nuevo_.
+
++
+Si desea utilizar un grupo de corredores de datos existente, el grupo debe tener solo un corredor de datos.  No se admiten varios corredores de datos en un grupo con relaciones de sincronización cifradas.
+
++
+Si aún no ha implementado un agente de datos, revise los requisitos del agente de datos.  Debido a que tiene políticas de seguridad estrictas, asegúrese de revisar los requisitos de red, que incluyen el tráfico saliente desde el puerto 443 y ellink:reference-networking.html["puntos finales de Internet"] que el corredor de datos contacta.
+
++
+** link:task-installing-aws.html["Revisar la instalación de AWS"]
+** link:task-installing-azure.html["Revisar la instalación de Azure"]
+** link:task-installing-gcp.html["Revisar la instalación de Google Cloud"]
+** link:task-installing-linux.html["Revisar la instalación del host Linux"]
+
+
+
+
+
+
+== Sincronizar datos NFS mediante cifrado de datos en tránsito
+
+Cree una nueva relación de sincronización entre dos servidores NFS o entre Azure NetApp Files, habilite la opción de cifrado en tránsito y siga las indicaciones.
+
+.Pasos
+. link:task-login-copyandsync.html["Iniciar sesión en Copiar y sincronizar"] .
+. Seleccione *Crear nueva sincronización*.
+. Arrastre y suelte *Servidor NFS* en las ubicaciones de origen y destino o * Azure NetApp Files* en las ubicaciones de origen y destino y seleccione *Sí* para habilitar el cifrado de datos en tránsito.
+. Siga las instrucciones para crear la relación:
++
+.. *Servidor NFS*/* Azure NetApp Files*: elija la versión de NFS y luego especifique una nueva fuente de NFS o seleccione un servidor existente.
+.. *Definir la funcionalidad del agente de datos*: define qué agente de datos _escucha_ las solicitudes de conexión en un puerto y cuál _inicia_ la conexión.  Haga su elección en función de sus necesidades de red.
+.. *Agente de datos*: siga las instrucciones para agregar un nuevo agente de datos de origen o seleccionar un agente de datos existente.
++
+Tenga en cuenta lo siguiente:
+
++
+*** Si desea utilizar un grupo de corredores de datos existente, el grupo debe tener solo un corredor de datos.  No se admiten varios corredores de datos en un grupo con relaciones de sincronización cifradas.
+*** Si el agente de datos de origen actúa como oyente, entonces debe ser un nuevo agente de datos.
+*** Si necesita un nuevo agente de datos, Copiar y sincronizar le solicitará las instrucciones de instalación.  Puede implementar el agente de datos en la nube o descargar un script de instalación para su propio host Linux.
+
+
+.. *Directorios*: elija los directorios que desea sincronizar seleccionando todos los directorios o explorando y seleccionando un subdirectorio.
++
+Seleccione *Filtrar objetos de origen* para modificar las configuraciones que definen cómo se sincronizan y mantienen los archivos y carpetas de origen en la ubicación de destino.
+
++
+image:screenshot_directories.gif["Una captura de pantalla que muestra la opción para seleccionar un directorio de nivel superior, explorar en profundidad y seleccionar la opción Filtrar objetos de origen."]
+
+.. *Servidor NFS de destino*/* Azure NetApp Files de destino*: elija la versión de NFS y luego ingrese un nuevo destino NFS o seleccione un servidor existente.
+.. *Agente de datos de destino*: siga las instrucciones para agregar un nuevo agente de datos de origen o seleccionar un agente de datos existente.
++
+Si el agente de datos de destino actúa como oyente, entonces debe ser un nuevo agente de datos.
+
++
+A continuación se muestra un ejemplo del mensaje que aparece cuando el agente de datos de destino funciona como oyente.  Tenga en cuenta la opción para especificar el puerto.
+
++
+image:screenshot_nfs_encryption_listener.gif["Una captura de pantalla que muestra la opción para especificar un puerto en el agente de datos de escucha."]
+
+.. *Directorios de destino*: seleccione un directorio de nivel superior o profundice para seleccionar un subdirectorio existente o para crear una nueva carpeta dentro de una exportación.
+.. *Configuración*: Define cómo se sincronizan y mantienen los archivos y carpetas de origen en la ubicación de destino.
+.. *Revisar*: revise los detalles de la relación de sincronización y luego seleccione *Crear relación*.
++
+image:screenshot_nfs_encryption_review.gif["Una captura de pantalla que muestra la pantalla de revisión.  Muestra los servidores NFS, los intermediarios de datos y la información de red de cada uno."]
+
+
+
+
+
+.Resultado
+Copiar y sincronizar comienza a crear la nueva relación de sincronización.  Cuando haya terminado, seleccione *Ver en el panel* para ver detalles sobre la nueva relación.

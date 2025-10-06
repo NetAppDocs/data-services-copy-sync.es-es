@@ -1,0 +1,239 @@
+---
+sidebar: sidebar 
+permalink: task-managing-relationships.html 
+keywords: sync, immediate, now, schedule, minutes, hours, on, off, delete, group, accelerate, accelerating, grouping, multiple data brokers, sync now, turn off, turn on, sync schedule, settings, change settings, recently modified files, delete files on target, retries, retry, file types, exclude file type, include file type, delete relationship 
+summary: Puede administrar las relaciones de sincronización en cualquier momento sincronizando datos de inmediato, cambiando programaciones y más. 
+---
+= Administración de relaciones de sincronización en NetApp Copy and Sync
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Puede administrar las relaciones de sincronización en NetApp Copy and Sync en cualquier momento sincronizando datos de inmediato, cambiando programaciones y más.
+
+
+
+== Realizar una sincronización de datos inmediata
+
+En lugar de esperar a la próxima sincronización programada, puede sincronizar inmediatamente los datos entre el origen y el destino.
+
+.Pasos
+. link:task-login-copyandsync.html["Iniciar sesión en Copiar y sincronizar"] .
+. Desde el *Panel de Control*, navegue hasta la relación de sincronización y seleccioneimage:icon-sync-action.png["Una captura de pantalla del botón que le permite realizar acciones en una relación de sincronización"]
+. Seleccione *Sincronizar ahora* y luego seleccione *Sincronizar* para confirmar.
+
+
+.Resultado
+Copiar y sincronizar inicia el proceso de sincronización de datos para la relación.
+
+
+
+== Acelerar el rendimiento de la sincronización
+
+Acelere el rendimiento de una relación de sincronización agregando un agente de datos adicional al grupo que administra la relación.  El agente de datos adicional debe ser un agente de datos _nuevo_.
+
+.Cómo funciona
+Si el grupo de agentes de datos administra otras relaciones de sincronización, el nuevo agente de datos que agregue al grupo también acelera el rendimiento de esas relaciones de sincronización.
+
+Por ejemplo, digamos que tienes tres relaciones:
+
+* La relación 1 está gestionada por el grupo de corredores de datos A
+* La relación 2 está gestionada por el grupo de corredores de datos B
+* La relación 3 está gestionada por el grupo de corredores de datos A
+
+
+Desea acelerar el rendimiento de la relación 1, por lo que agrega un nuevo agente de datos al grupo de agentes de datos A. Debido a que el grupo A también administra la relación de sincronización 3, el rendimiento de sincronización de la relación también se acelera automáticamente.
+
+.Pasos
+. Asegúrese de que al menos uno de los corredores de datos existentes en la relación esté en línea.
+. Desde el *Panel de Control*, navegue hasta la relación de sincronización y seleccioneimage:icon-sync-action.png["Una captura de pantalla del botón que le permite realizar acciones en una relación de sincronización"]
+. Seleccione *Acelerar*.
+. Siga las instrucciones para crear un nuevo agente de datos.
+
+
+.Resultado
+Copiar y sincronizar agrega el nuevo agente de datos al grupo.  Se debe acelerar el rendimiento de la próxima sincronización de datos.
+
+
+
+== Actualizar credenciales
+
+Puede actualizar el agente de datos con las últimas credenciales del origen o el destino en una relación de sincronización existente.  Actualizar las credenciales puede ayudar si sus políticas de seguridad requieren que actualice las credenciales periódicamente.
+
+La actualización de credenciales es compatible con cualquier origen o destino para el que Copy and Sync requiera credenciales: Azure Blob, Box, IBM Cloud Object Storage, StorageGRID, ONTAP S3 Storage, SFTP y servidores SMB.
+
+.Pasos
+. Desde el *Panel de sincronización*, vaya a una relación de sincronización que requiera credenciales y luego seleccione *Actualizar credenciales*.
++
+image:screenshot_sync_update_credentials.png["Una captura de pantalla que muestra la opción Actualizar credenciales en la página Sincronizar relaciones justo debajo del nombre de la fuente o el destino."]
+
+. Ingrese las credenciales y seleccione *Actualizar*.
++
+Una nota sobre los servidores SMB: si el dominio es nuevo, deberá especificarlo cuando actualice las credenciales.  Si el dominio no ha cambiado, no es necesario ingresarlo nuevamente.
+
++
+Si ingresó un dominio cuando creó la relación de sincronización, pero no ingresa un nuevo dominio cuando actualiza las credenciales, Copiar y sincronizar seguirá usando el dominio original que proporcionó.
+
+
+
+.Resultado
+Copiar y sincronizar actualiza las credenciales en el agente de datos.  Pueden pasar hasta 10 minutos hasta que el agente de datos comience a utilizar las credenciales actualizadas para las sincronizaciones de datos.
+
+
+
+== Configurar notificaciones
+
+Una configuración de *Notificaciones* para cada relación de sincronización le permite elegir si desea recibir notificaciones de Copiar y Sincronizar en el Centro de notificaciones de la Consola de NetApp .  Puede habilitar notificaciones para sincronizaciones de datos exitosas, fallidas y canceladas.
+
+image:https://raw.githubusercontent.com/NetAppDocs/bluexp-copy-sync/main/media/screenshot-notification-center.png["Una captura de pantalla que muestra el Centro de notificaciones en la consola de NetApp ."]
+
+Además, también podrás recibir notificaciones por correo electrónico.
+
+.Pasos
+. Modificar la configuración de una relación de sincronización:
++
+.. Desde el *Panel de Control*, navegue hasta la relación de sincronización y seleccioneimage:icon-sync-action.png["Una captura de pantalla del botón que le permite realizar acciones en una relación de sincronización"]
+.. Seleccione *Configuración*.
+.. Habilitar *Notificaciones*.
+.. Seleccione *Guardar configuración*.
+
+
+. Si desea recibir notificaciones por correo electrónico, configure los ajustes de alertas y notificaciones:
++
+.. Seleccione *Configuración > Configuración de alertas y notificaciones*.
+.. Seleccione un usuario o varios usuarios y elija el tipo de notificación *Info*.
+.. Seleccione *Aplicar*.
+
+
+
+
+.Resultado
+Ahora recibirá notificaciones de Copiar y Sincronizar en el Centro de notificaciones de la Consola de NetApp , y algunas notificaciones llegarán por correo electrónico, si configuró esa opción.
+
+
+
+== Cambiar la configuración de una relación de sincronización
+
+Modifique las configuraciones que definen cómo se sincronizan y mantienen los archivos y carpetas de origen en la ubicación de destino.
+
+. Desde el *Panel de Control*, navegue hasta la relación de sincronización y seleccioneimage:icon-sync-action.png["Una captura de pantalla del botón que le permite realizar acciones en una relación de sincronización"]
+. Seleccione *Configuración*.
+. Modificar cualquiera de las configuraciones.
++
+image:screenshot_sync_settings.png["Una captura de pantalla que muestra la configuración de una relación de sincronización."]
+
++
+[[deleteonsource]] Aquí hay una breve descripción de cada configuración:
+
++
+Cronograma:: Elija una programación recurrente para sincronizaciones futuras o desactive la programación de sincronización.  Puede programar una relación para sincronizar datos con una frecuencia de hasta 1 minuto.
+Tiempo de espera de sincronización:: Define si Copiar y sincronizar debe cancelar una sincronización de datos si la sincronización no se ha completado en la cantidad especificada de minutos, horas o días.
+Notificaciones:: Le permite elegir si desea recibir notificaciones de copia y sincronización en el Centro de notificaciones de la consola de NetApp .  Puede habilitar notificaciones para sincronizaciones de datos exitosas, fallidas y canceladas.
++
+--
+Si deseas recibir notificaciones de
+
+--
+Reintentos:: Define la cantidad de veces que Copiar y sincronizar debe volver a intentar sincronizar un archivo antes de omitirlo.
+Comparar por:: Elija si Copiar y sincronizar debe comparar ciertos atributos al determinar si un archivo o directorio ha cambiado y debe sincronizarse nuevamente.
++
+--
+Incluso si desmarca estos atributos, Copiar y sincronizar aún compara el origen con el destino verificando las rutas, los tamaños de archivo y los nombres de archivo.  Si hay algún cambio, sincroniza esos archivos y directorios.
+
+Puede elegir habilitar o deshabilitar Copiar y sincronizar comparando los siguientes atributos:
+
+** *mtime*: La hora de la última modificación de un archivo.  Este atributo no es válido para directorios.
+** *uid*, *gid* y *mode*: Indicadores de permisos para Linux.
+
+
+--
+Copiar para objetos:: No puedes editar esta opción después de crear la relación.
+Archivos modificados recientemente:: Elija excluir archivos que se modificaron recientemente antes de la sincronización programada.
+Eliminar archivos en la fuente:: Elija eliminar archivos de la ubicación de origen después de que Copiar y sincronizar copie los archivos a la ubicación de destino.  Esta opción incluye el riesgo de pérdida de datos porque los archivos de origen se eliminan después de copiarse.
++
+--
+Si habilita esta opción, también deberá cambiar un parámetro en el archivo local.json en el agente de datos.  Abra el archivo y actualícelo de la siguiente manera:
+
+[source, json]
+----
+{
+"workers":{
+"transferrer":{
+"delete-on-source": true
+}
+}
+}
+----
+Después de actualizar el archivo local.json, debes reiniciar: `pm2 restart all` .
+
+--
+Eliminar archivos en el destino:: Elija eliminar archivos de la ubicación de destino, si se eliminaron de la fuente.  El valor predeterminado es nunca eliminar archivos de la ubicación de destino.
+Tipos de archivos:: Define los tipos de archivos que se incluirán en cada sincronización: archivos, directorios, enlaces simbólicos y enlaces duros.
++
+--
+
+NOTE: Los enlaces duros solo están disponibles para relaciones NFS a NFS no seguras.  Los usuarios estarán limitados a un proceso de escáner y a una concurrencia de escáneres, y los escaneos deberán ejecutarse desde un directorio raíz.
+
+--
+Excluir extensiones de archivo:: Especifique la expresión regular o las extensiones de archivo que desea excluir de la sincronización escribiendo la extensión del archivo y presionando *Enter*.  Por ejemplo, escriba _log_ o _.log_ para excluir archivos *.log.  No se requiere un separador para múltiples extensiones.  El siguiente vídeo ofrece una breve demostración:
++
+--
+.Excluir extensiones de archivo para una relación de sincronización
+video::7f957dbf-9215-41ea-a705-b24c010b2212[panopto]
+
+NOTE: Las expresiones regulares o regex se diferencian de los comodines o expresiones glob.  Esta función *sólo* funciona con expresiones regulares.
+
+--
+Excluir directorios:: Especifique un máximo de 15 expresiones regulares o directorios para excluir de la sincronización escribiendo su nombre o la ruta completa del directorio y presionando *Enter*.  Los directorios .copy-offload, .snapshot y ~snapshot están excluidos de forma predeterminada.
++
+--
+
+NOTE: Las expresiones regulares o regex se diferencian de los comodines o expresiones glob.  Esta función *sólo* funciona con expresiones regulares.
+
+--
+Tamaño del archivo:: Elija sincronizar todos los archivos independientemente de su tamaño o solo los archivos que estén en un rango de tamaño específico.
+Fecha de modificación:: Elija todos los archivos independientemente de su última fecha de modificación, archivos modificados después de una fecha específica, antes de una fecha específica o entre un rango de tiempo.
+Fecha de creación:: Cuando un servidor SMB es la fuente, esta configuración le permite sincronizar archivos que se crearon después de una fecha específica, antes de una fecha específica o entre un rango de tiempo específico.
+ACL - Lista de control de acceso:: Copie solo ACL, solo archivos o ACL y archivos desde un servidor SMB habilitando una configuración cuando crea una relación o después de crear una relación.
+
+
+. Seleccione *Guardar configuración*.
+
+
+.Resultado
+Copiar y sincronizar modifica la relación de sincronización con la nueva configuración.
+
+
+
+== Eliminar relaciones
+
+Puede eliminar una relación de sincronización si ya no necesita sincronizar datos entre el origen y el destino.  Esta acción no elimina el grupo de corredores de datos (ni las instancias individuales de corredores de datos) y no elimina datos del destino.
+
+
+
+=== Opción 1: Eliminar una sola relación de sincronización
+
+.Pasos
+. Desde el *Panel de Control*, navegue hasta la relación de sincronización y seleccioneimage:icon-sync-action.png["Una captura de pantalla del botón que le permite realizar acciones en una relación de sincronización"]
+. Seleccione *Eliminar* y luego seleccione *Eliminar* nuevamente para confirmar.
+
+
+.Resultado
+Copiar y sincronizar elimina la relación de sincronización.
+
+
+
+=== Opción 2: Eliminar múltiples relaciones de sincronización
+
+.Pasos
+. Desde el *Panel de Control*, navegue hasta el botón "Crear nueva sincronización" y seleccioneimage:icon-sync-action.png["Una captura de pantalla del botón que le permite realizar acciones en una relación de sincronización"]
+. Seleccione las relaciones de sincronización que desea eliminar, seleccione *Eliminar* y luego seleccione *Eliminar* nuevamente para confirmar.
+
+
+.Resultado
+Copiar y sincronizar elimina las relaciones de sincronización.

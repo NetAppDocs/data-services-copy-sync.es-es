@@ -1,0 +1,224 @@
+---
+sidebar: sidebar 
+permalink: task-installing-azure.html 
+keywords: data broker, install, azure, networking, permissions, regions, install data broker in azure, install in azure, deploy in azure, deploy data broker in azure, networking requirements, port, ports, 443, port 443, ntp, network time protocol, azure data broker 
+summary: Al crear un nuevo agente de datos, elija la opción Azure Data Broker para implementar el software del agente de datos en una nueva máquina virtual en una red virtual.  NetApp Copy and Sync lo guía a través del proceso de instalación, pero los requisitos y pasos se repiten en esta página para ayudarlo a prepararse para la instalación. 
+---
+= Cree un nuevo agente de datos en Azure para NetApp Copy and Sync
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Cuando crea un nuevo grupo de agente de datos para NetApp Copy and Sync, elija Microsoft Azure para implementar el software del agente de datos en una nueva máquina virtual en una VNet.  NetApp Copy and Sync lo guía a través del proceso de instalación, pero los requisitos y pasos se repiten en esta página para ayudarlo a prepararse para la instalación.
+
+También tiene la opción de instalar el agente de datos en un host Linux existente en la nube o en sus instalaciones. link:task-installing-linux.html["Más información"] .
+
+
+
+== Regiones de Azure compatibles
+
+Se admiten todas las regiones, excepto las de China, Gobierno de EE. UU. y Departamento de Defensa de EE. UU.
+
+
+
+== Privilegios de root
+
+El software del intermediario de datos se ejecuta automáticamente como root en el host Linux.  Ejecutarse como root es un requisito para las operaciones del agente de datos.  Por ejemplo, para montar acciones.
+
+
+
+== Requisitos de red
+
+* El agente de datos necesita una conexión a Internet saliente para poder sondear el servicio de copia y sincronización en busca de tareas a través del puerto 443.
++
+Cuando Copy and Sync implementa el agente de datos en Azure, crea un grupo de seguridad que habilita la comunicación saliente requerida.
+
++
+Si necesita limitar la conectividad saliente, consultelink:reference-networking.html["la lista de puntos finales con los que se pone en contacto el agente de datos"] .
+
+* NetApp recomienda configurar el origen, el destino y el agente de datos para utilizar un servicio de Protocolo de tiempo de red (NTP).  La diferencia de tiempo entre los tres componentes no debe exceder los 5 minutos.
+
+
+
+
+== Permisos necesarios para implementar el agente de datos en Azure
+
+Asegúrese de que la cuenta de usuario de Azure que utiliza para implementar el agente de datos tenga los siguientes permisos:
+
+[source, json]
+----
+{
+    "Name": "Azure Data Broker",
+    "Actions": [
+					"Microsoft.Resources/subscriptions/read",
+                    "Microsoft.Resources/deployments/operationstatuses/read",
+                    "Microsoft.Resources/subscriptions/locations/read",
+                    "Microsoft.Network/networkInterfaces/read",
+                    "Microsoft.Network/virtualNetworks/subnets/read",
+                    "Microsoft.Resources/subscriptions/resourceGroups/write",
+                    "Microsoft.Resources/subscriptions/resourceGroups/delete",
+                    "Microsoft.Resources/deployments/write",
+                    "Microsoft.Resources/deployments/validate/action",
+                    "Microsoft.Resources/deployments/operationStatuses/read",
+                    "Microsoft.Resources/deployments/cancel/action",
+                    "Microsoft.Compute/virtualMachines/read",
+                    "Microsoft.Compute/virtualMachines/delete",
+                    "Microsoft.Compute/disks/delete",
+                    "Microsoft.Network/networkInterfaces/delete",
+                    "Microsoft.Network/publicIPAddresses/delete",
+                    "Microsoft.Network/networkSecurityGroups/securityRules/delete",
+                    "Microsoft.Resources/subscriptions/resourceGroups/write",
+                    "Microsoft.Compute/virtualMachines/delete",
+                    "Microsoft.Network/networkSecurityGroups/write",
+                    "Microsoft.Network/networkSecurityGroups/join/action",
+                    "Microsoft.Compute/disks/write",
+                    "Microsoft.Network/networkInterfaces/write",
+                    "Microsoft.Network/virtualNetworks/read",
+                    "Microsoft.Network/publicIPAddresses/write",
+                    "Microsoft.Compute/virtualMachines/write",
+                    "Microsoft.Compute/virtualMachines/extensions/write",
+                    "Microsoft.Resources/deployments/read",
+                    "Microsoft.Network/networkSecurityGroups/read",
+                    "Microsoft.Network/publicIPAddresses/read",
+                    "Microsoft.Network/virtualNetworks/subnets/join/action",
+                    "Microsoft.Network/publicIPAddresses/join/action",
+                    "Microsoft.Network/networkInterfaces/join/action",
+                    "Microsoft.Storage/storageAccounts/read",
+                    "Microsoft.EventGrid/systemTopics/eventSubscriptions/write",
+                    "Microsoft.EventGrid/systemTopics/eventSubscriptions/read",
+                    "Microsoft.EventGrid/systemTopics/eventSubscriptions/delete",
+                    "Microsoft.EventGrid/systemTopics/eventSubscriptions/getFullUrl/action",
+                    "Microsoft.EventGrid/systemTopics/eventSubscriptions/getDeliveryAttributes/action",
+                    "Microsoft.EventGrid/systemTopics/read",
+                    "Microsoft.EventGrid/systemTopics/write",
+                    "Microsoft.EventGrid/systemTopics/delete",
+                    "Microsoft.EventGrid/eventSubscriptions/write",
+                    "Microsoft.Storage/storageAccounts/write"
+                    "Microsoft.MarketplaceOrdering/offertypes/publishers/offers/plans/agreements/read"
+                    "Microsoft.MarketplaceOrdering/offertypes/publishers/offers/plans/agreements/write"
+                    "Microsoft.Network/networkSecurityGroups/securityRules/read",
+        	        "Microsoft.Network/networkSecurityGroups/read",
+----
+....
+    ],
+    "NotActions": [],
+    "AssignableScopes": [],
+    "Description": "Azure Data Broker",
+    "IsCustom": "true"
+}
+....
+Nota:
+
+. Los siguientes permisos solo son necesarios si planea habilitar el https://docs.netapp.com/us-en/bluexp-copy-sync/task-creating-relationships.html#settings["Configuración de sincronización continua"] en una relación de sincronización de Azure a otra ubicación de almacenamiento en la nube:
++
+** 'Microsoft.Storage/storageAccounts/lectura',
+** 'Microsoft.EventGrid/systemTopics/eventSubscriptions/write',
+** 'Microsoft.EventGrid/systemTopics/eventSubscriptions/leer',
+** 'Microsoft.EventGrid/systemTopics/eventSubscriptions/eliminar',
+** 'Microsoft.EventGrid/systemTopics/eventSubscriptions/getFullUrl/acción',
+** 'Microsoft.EventGrid/systemTopics/eventSubscriptions/getDeliveryAttributes/acción',
+** 'Microsoft.EventGrid/systemTopics/leer',
+** 'Microsoft.EventGrid/systemTopics/escritura',
+** 'Microsoft.EventGrid/systemTopics/eliminar',
+** 'Microsoft.EventGrid/eventSubscriptions/escritura',
+** 'Microsoft.Storage/storageAccounts/write'
+
+
++
+Además, el alcance asignable debe establecerse en el alcance de suscripción y *no* en el alcance del grupo de recursos si planea implementar sincronización continua en Azure.
+
+. Los siguientes permisos solo son necesarios si planea elegir su propia seguridad para la creación del agente de datos:
++
+** "Microsoft.Network/networkSecurityGroups/securityRules/read"
+** "Microsoft.Network/networkSecurityGroups/read"
+
+
+
+
+
+
+== Método de autenticación
+
+Al implementar el agente de datos, deberá elegir un método de autenticación para la máquina virtual: una contraseña o un par de claves pública-privada SSH.
+
+Para obtener ayuda con la creación de un par de claves, consulte https://docs.microsoft.com/en-us/azure/virtual-machines/linux/mac-create-ssh-keys["Documentación de Azure: Crear y usar un par de claves públicas y privadas SSH para máquinas virtuales Linux en Azure"^] .
+
+
+
+== Crear el agente de datos
+
+Hay algunas formas de crear un nuevo corredor de datos.  Estos pasos describen cómo instalar un agente de datos en Azure cuando se crea una relación de sincronización.
+
+.Pasos
+. link:task-login-copyandsync.html["Iniciar sesión en Copiar y sincronizar"] .
+. Seleccione *Crear nueva sincronización*.
+. En la página *Definir relación de sincronización*, elija un origen y un destino y seleccione *Continuar*.
++
+Complete los pasos hasta llegar a la página *Data Broker Group*.
+
+. En la página *Grupo de agentes de datos*, seleccione *Crear agente de datos* y luego seleccione *Microsoft Azure*.
++
+image:screenshot-azure.png["Una captura de pantalla de la página del agente de datos que le permite elegir entre un agente de datos de AWS, Azure, Google Cloud y On-Prem."]
+
+. Ingrese un nombre para el agente de datos y seleccione *Continuar*.
+. Si se le solicita, inicie sesión en su cuenta Microsoft.  Si no se le solicita, seleccione *Iniciar sesión en Azure*.
++
+El formulario es propiedad de Microsoft y está alojado por esta empresa. Sus credenciales no se proporcionan a NetApp.
+
+. Seleccione una ubicación para el agente de datos e ingrese detalles básicos sobre la máquina virtual.
++
+image:screenshot_azure_data_broker.png["Una captura de pantalla de la página de implementación de Azure que muestra los siguientes campos: Suscripción, Región de Azure, Red virtual, Subred, Nombre de máquina virtual, Nombre de usuario, Método de autenticación y Grupo de recursos."]
+
++
+
+NOTE: Si planea implementar una relación de sincronización continua, debe asignar un rol personalizado a su agente de datos.  Esto también se puede hacer manualmente después de crear el bróker.
+
+. Especifique una configuración de proxy, si se requiere un proxy para el acceso a Internet en la red virtual.
+. Seleccione *Continuar*. Si desea agregar permisos S3 a su agente de datos, ingrese sus claves secretas y de acceso de AWS.
+. Seleccione *Continuar* y mantenga la página abierta hasta que se complete la implementación.
++
+El proceso puede tardar hasta 7 minutos.
+
+. En Copiar y sincronizar, seleccione *Continuar* una vez que el agente de datos esté disponible.
+. Complete las páginas del asistente para crear la nueva relación de sincronización.
+
+
+.Resultado
+Ha implementado un agente de datos en Azure y ha creado una nueva relación de sincronización.  Puede utilizar este agente de datos con relaciones de sincronización adicionales.
+
+.¿Recibes un mensaje sobre la necesidad de consentimiento del administrador?
+****
+Si Microsoft le notifica que se requiere la aprobación del administrador porque Copy and Sync necesita permiso para acceder a los recursos de su organización en su nombre, entonces tiene dos opciones:
+
+. Pídale a su administrador de AD que le proporcione el siguiente permiso:
++
+En Azure, vaya a *Centros de administración > Azure AD > Usuarios y grupos > Configuración de usuario* y habilite *Los usuarios pueden dar su consentimiento para que las aplicaciones accedan a los datos de la empresa en su nombre*.
+
+. Pídale a su administrador de AD que dé su consentimiento en su nombre para *CloudSync-AzureDataBrokerCreator* mediante la siguiente URL (este es el punto final de consentimiento del administrador):
++
+\ https://login.microsoftonline.com/ {RELLENE AQUÍ SU ID DE INQUILINO}/v2.0/adminconsent?client_id=8ee4ca3a-bafa-4831-97cc-5a38923cab85&redirect_uri= https://cloudsync.netapp.com&scope=https://management.azure.com/user_impersonationhttps://graph.microsoft.com/User.Read
+
++
+Como se muestra en la URL, la URL de nuestra aplicación es \ https://cloudsync.netapp.com y el ID del cliente de la aplicación es 8ee4ca3a-bafa-4831-97cc-5a38923cab85.
+
+
+
+****
+
+
+== Detalles sobre la máquina virtual del agente de datos
+
+Copiar y sincronizar crea un agente de datos en Azure mediante la siguiente configuración.
+
+Compatibilidad con Node.js:: v21.2.0
+Tipo de VM:: Estándar DS4 v2
+vCPU:: 8
+RAM:: 28 GB
+Sistema operativo:: Rocky Linux 9,0
+Tamaño y tipo de disco:: SSD premium de 64 GB
+

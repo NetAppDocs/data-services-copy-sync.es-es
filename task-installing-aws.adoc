@@ -1,0 +1,131 @@
+---
+sidebar: sidebar 
+permalink: task-installing-aws.html 
+keywords: data broker, install, aws, networking, permissions, regions, install data broker in aws, install in aws, deploy in aws, deploy data broker in aws, cft, template, iam role, use your own iam role, regions, supported regions, networking requirements, port, ports, 443, port 443, ntp, network time protocol, permissions, iam role, iam permissions, aws data broker 
+summary: Cuando cree un nuevo agente de datos, elija la opción AWS Data Broker para implementar el software del agente de datos en una nueva instancia EC2 en una VPC.  NetApp Copy and Sync lo guía a través del proceso de instalación, pero los requisitos y pasos se repiten en esta página para ayudarlo a prepararse para la instalación. 
+---
+= Cree un nuevo agente de datos en AWS para NetApp Copy and Sync
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Cuando crea un nuevo grupo de agente de datos para NetApp Copy and Sync, elija Amazon Web Services para implementar el software del agente de datos en una nueva instancia EC2 en una VPC.  NetApp Copy and Sync lo guía a través del proceso de instalación, pero los requisitos y pasos se repiten en esta página para ayudarlo a prepararse para la instalación.
+
+También tiene la opción de instalar el agente de datos en un host Linux existente en la nube o en sus instalaciones. link:task-installing-linux.html["Más información"] .
+
+
+
+== Regiones de AWS compatibles
+
+Se admiten todas las regiones excepto la de China.
+
+
+
+== Privilegios de root
+
+El software del intermediario de datos se ejecuta automáticamente como root en el host Linux.  Ejecutarse como root es un requisito para las operaciones del agente de datos.  Por ejemplo, para montar acciones.
+
+
+
+== Requisitos de red
+
+* El agente de datos necesita una conexión a Internet saliente para poder sondear Copy and Sync en busca de tareas a través del puerto 443.
++
+Cuando Copy and Sync implementa el agente de datos en AWS, crea un grupo de seguridad que habilita la comunicación saliente requerida.  Tenga en cuenta que puede configurar el agente de datos para utilizar un servidor proxy durante el proceso de instalación.
+
++
+Si necesita limitar la conectividad saliente, consultelink:reference-networking.html["la lista de puntos finales con los que se pone en contacto el agente de datos"] .
+
+* NetApp recomienda configurar el origen, el destino y el agente de datos para utilizar un servicio de Protocolo de tiempo de red (NTP).  La diferencia de tiempo entre los tres componentes no debe exceder los 5 minutos.
+
+
+
+
+== Permisos necesarios para implementar el agente de datos en AWS
+
+La cuenta de usuario de AWS que utilice para implementar el agente de datos debe tener los permisos incluidos en https://s3.amazonaws.com/metadata.datafabric.io/docs/aws_iam_policy.json["Esta política proporcionada por NetApp"^] .
+
+
+
+== [[iam]]Requisitos para usar su propio rol de IAM con el agente de datos de AWS
+
+Cuando Copy and Sync implementa el agente de datos, crea una función de IAM para la instancia del agente de datos. Puede implementar el agente de datos utilizando su propio rol de IAM, si lo prefiere.  Puede utilizar esta opción si su organización tiene políticas de seguridad estrictas.
+
+El rol de IAM debe cumplir los siguientes requisitos:
+
+* Se debe permitir que el servicio EC2 asuma el rol de IAM como entidad confiable.
+* link:media/aws_iam_policy_data_broker.json["Los permisos definidos en este archivo JSON"^]debe estar asociado al rol IAM para que el agente de datos pueda funcionar correctamente.
+
+
+Siga los pasos a continuación para especificar la función de IAM al implementar el agente de datos.
+
+
+
+== Crear el agente de datos
+
+Hay algunas formas de crear un nuevo corredor de datos.  Estos pasos describen cómo instalar un agente de datos en AWS al crear una relación de sincronización.
+
+.Pasos
+. link:task-login-copyandsync.html["Iniciar sesión en Copiar y sincronizar"] .
+. Seleccione *Crear nueva sincronización*.
+. En la página *Definir relación de sincronización*, elija un origen y un destino y seleccione *Continuar*.
++
+Complete los pasos hasta llegar a la página *Data Broker Group*.
+
+. En la página *Grupo de agente de datos*, seleccione *Crear agente de datos* y luego seleccione *Amazon Web Services*.
++
+image:screenshot-aws.png["Una captura de pantalla de la página del agente de datos que le permite elegir entre un agente de datos de AWS, Azure, Google Cloud y On-Prem."]
+
+. Ingrese un nombre para el agente de datos y seleccione *Continuar*.
+. Ingrese una clave de acceso de AWS para que Copy and Sync pueda crear el agente de datos en AWS en su nombre.
++
+Las claves no se guardan ni se utilizan para ningún otro propósito.
+
++
+Si prefiere no proporcionar claves de acceso, seleccione el enlace en la parte inferior de la página para utilizar una plantilla de CloudFormation en su lugar.  Cuando utiliza esta opción, no necesita proporcionar credenciales porque está iniciando sesión directamente en AWS.
+
++
+[[cft]]El siguiente video muestra cómo iniciar la instancia del agente de datos utilizando una plantilla de CloudFormation:
+
++
+.Iniciar un agente de datos desde una plantilla de AWS CloudFormation
+video::abaf0898-ea15-4f84-938e-b24c010b21e8[panopto]
+. Si ingresó una clave de acceso de AWS, seleccione una ubicación para la instancia, seleccione un par de claves, elija si desea habilitar una dirección IP pública y seleccione una función de IAM existente, o deje el campo en blanco para que Copiar y sincronizar cree la función por usted.  También tiene la opción de cifrar su agente de datos utilizando una clave KMS.
++
+Si elige su propio rol de IAM,<<iam,Necesitarás proporcionar los permisos necesarios>> .
+
++
+image:screenshot_aws_data_broker.png["Una captura de pantalla de la información que debe proporcionar al implementar un agente de datos en AWS."]
+
+. Especifique una configuración de proxy, si se requiere un proxy para el acceso a Internet en la VPC.
+. Una vez que el agente de datos esté disponible, seleccione *Continuar* en Copiar y sincronizar.
++
+La siguiente imagen muestra una instancia implementada correctamente en AWS:
+
++
+image:screenshot-data-broker-group-selected.png["Esta captura de pantalla muestra una instancia implementada correctamente.  La interfaz muestra detalles sobre la instancia, incluida la red de AWS."]
+
+. Complete las páginas del asistente para crear la nueva relación de sincronización.
+
+
+.Resultado
+Ha implementado un agente de datos en AWS y ha creado una nueva relación de sincronización.  Puede utilizar este grupo de intermediarios de datos con relaciones de sincronización adicionales.
+
+
+
+== Detalles sobre la instancia del agente de datos
+
+Copiar y sincronizar crea un agente de datos en AWS utilizando la siguiente configuración.
+
+Compatibilidad con Node.js:: v21.2.0
+Tipo de instancia:: m5n.xlarge cuando esté disponible en la región, de lo contrario m5.xlarge
+vCPU:: 4
+RAM:: 16 GB
+Sistema operativo:: Amazon Linux 2023
+Tamaño y tipo de disco:: SSD GP2 de 10 GB
+

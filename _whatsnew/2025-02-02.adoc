@@ -1,0 +1,11 @@
+= Nuevo soporte del sistema operativo para el agente de datos
+:allow-uri-read: 
+
+
+
+
+=== Nuevo soporte del sistema operativo para el agente de datos
+
+El agente de datos ahora es compatible con hosts que ejecutan Red Hat Enterprise 9.4, Ubuntu 23.04 y Ubuntu 24.04.
+
+https://docs.netapp.com/us-en/bluexp-copy-sync/task-installing-linux.html#linux-host-requirements["Ver los requisitos del host Linux"] .

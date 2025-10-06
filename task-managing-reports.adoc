@@ -1,0 +1,99 @@
+---
+sidebar: sidebar 
+permalink: task-managing-reports.html 
+keywords: reports, sync reports, NetApp Copy and Sync reports, report errors, path reports 
+summary: Cree y visualice informes para obtener información que pueda utilizar con la ayuda del personal de NetApp para ajustar la configuración de un agente de datos y mejorar el rendimiento. 
+---
+= Cree y visualice informes para ajustar su configuración en NetApp Copy and Sync
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Cree y visualice informes en NetApp Copy and Sync para obtener información que pueda usar con la ayuda del personal de NetApp para ajustar la configuración de un agente de datos y mejorar el rendimiento.
+
+Cada informe proporciona detalles detallados sobre una ruta en una relación de sincronización.  Incluirá cuántos directorios, archivos y enlaces simbólicos hay, la distribución del tamaño de los archivos, qué tan profundos y anchos son los directorios, el tiempo de modificación y el tiempo de acceso.  Esto difiere de las estadísticas de sincronización, que están disponibles en el panel de control después https://docs.netapp.com/us-en/bluexp-copy-sync/task-creating-relationships.html["creando y completando con éxito una sincronización"] .
+
+
+
+== Crear informes
+
+Cada vez que se crea un informe, Copiar y sincronizar escanea la ruta y luego compila los detalles en un informe.
+
+.Pasos
+. link:task-login-copyandsync.html["Iniciar sesión en Copiar y sincronizar"] .
+. Seleccione *Sincronizar > Informes*.
++
+Las rutas (de origen o de destino) en cada una de sus relaciones de sincronización se muestran en una tabla.
+
+. En la columna *Acciones de informes*, vaya a una ruta específica y seleccione *Crear*, o seleccione el menú de acciones y seleccione *Crear nuevo*.
+. Cuando el informe esté listo, seleccione el menú de acciones y seleccione *Ver*.
++
+A continuación se muestra un informe de muestra para una ruta del sistema de archivos.
+
++
+image:screenshot_sync_report.gif["Un informe que muestra la cantidad de elementos sincronizados, el tamaño del archivo, los máximos, el tiempo de acceso, el tiempo de cambio y el tiempo de modificación."]
+
++
+Y aquí hay un informe de muestra para el almacenamiento de objetos.
+
++
+image:screenshot_sync_report_object.gif["Un informe que muestra la cantidad de elementos de ruta, el tamaño de los objetos, el tiempo de modificación y la clase de almacenamiento."]
+
+
+
+
+
+== Descargar informes
+
+Puedes descargar un informe en PDF para poder verlo sin conexión o compartirlo.
+
+.Pasos
+. link:task-login-copyandsync.html["Iniciar sesión en Copiar y sincronizar"] .
+. Seleccione *Sincronizar > Informes*.
+. En la columna *Acciones de informes*, seleccione el menú de acciones y seleccione *Ver*.
+. En la parte superior derecha del informe, seleccione el menú de acciones y seleccione *Descargar pdf*.
++
+image:screenshot-sync-download-report.png["Una captura de pantalla de la opción Descargar PDF que aparece después de seleccionar el menú de acciones en un informe."]
+
+
+
+
+
+== Ver errores del informe
+
+La tabla Rutas identifica si hay errores presentes en el informe más reciente.  Un error identifica un problema que Copy and Sync enfrentó al escanear la ruta.
+
+Por ejemplo, un informe podría contener errores de permiso denegado.  Este tipo de error puede afectar la capacidad de Copy and Sync de escanear todo el conjunto de archivos y directorios.
+
+Después de ver la lista de errores, puede abordar los problemas y ejecutar el informe nuevamente.
+
+.Pasos
+. link:task-login-copyandsync.html["Iniciar sesión en Copiar y sincronizar"] .
+. Seleccione *Sincronizar > Informes*.
+. En la columna *Errores*, identifique si hay errores presentes en un informe.
+. Si hay errores, seleccione la flecha junto al número de errores.
++
+image:screenshot_sync_report_errors.gif["Una captura de pantalla de la tabla Rutas que muestra la cantidad de errores y una pequeña flecha en la que se puede hacer clic en la columna Errores."]
+
+. Utilice la información del error para corregir el problema.
++
+Después de resolver el problema, el error no debería aparecer la próxima vez que ejecute el informe.
+
+
+
+
+
+== Eliminar informes
+
+Es posible que elimines un informe que contenga un error que hayas corregido o que esté relacionado con una relación de sincronización que hayas eliminado.
+
+.Pasos
+. Seleccione *Sincronizar > Informes*.
+. En la columna *Acciones de informes*, seleccione el menú de acciones de una ruta y seleccione *Eliminar último informe* o *Eliminar todos los informes*.
+. Confirme que desea eliminar el o los informes.
+

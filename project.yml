@@ -1,0 +1,91 @@
+---
+settings:
+  name: NetApp Copy and Sync
+  harmony_integration: maestro
+  internal:
+    pdf_enabled: true
+  prod:
+    pdf_enabled: true
+    harmony_enabled: false
+  rss_page: whats-new.html
+  langs: es-es,us-en,de-de,fr-fr,it-it,pt-br,ja-jp,ko-kr,zh-cn,zh-tw
+sidebar:
+  entries:
+  - title: Documentos de NetApp Copy and Sync
+    url: "/index.html"
+  - title: Notas de la versión
+    entries:
+    - title: Qué hay de nuevo
+      url: "/whats-new.html"
+    - title: Limitaciones
+      url: "/reference-limitations.html"
+  - title: Empezar
+    entries:
+    - title: Obtenga más información sobre NetApp Copy and Sync
+      url: "/concept-cloud-sync.html"
+    - title: Inicio rápido
+      url: "/task-quick-start.html"
+    - title: Ver relaciones de sincronización admitidas
+      url: "/reference-supported-relationships.html"
+    - title: Preparar la fuente y el destino
+      url: "/reference-requirements.html"
+    - title: Preparar la red
+      url: "/reference-networking.html"
+    - title: Inicie sesión en NetApp Copy and Sync
+      url: "/task-login-copyandsync.html"
+    - title: Instalar un agente de datos
+      entries:
+      - title: Instalar en AWS
+        url: "/task-installing-aws.html"
+      - title: Instalar en Azure
+        url: "/task-installing-azure.html"
+      - title: Instalar en Google Cloud
+        url: "/task-installing-gcp.html"
+      - title: Instalar en un host Linux
+        url: "/task-installing-linux.html"
+  - title: Utilice NetApp Copy and Sync
+    entries:
+    - title: Sincronizar datos entre un origen y un destino
+      entries:
+      - title: Prepare un agente de datos para sincronizar datos entre el almacenamiento
+          de objetos
+        url: "/task-prepare-object-storage.html"
+      - title: Crear una relación de sincronización
+        url: "/task-creating-relationships.html"
+      - title: Copiar ACL desde un recurso compartido SMB
+        url: "/task-copying-acls.html"
+      - title: Cifrar datos NFS en tránsito
+        url: "/task-nfs-encryption.html"
+      - title: Utilice secretos de HashiCorp Vault
+        url: "/task-external-vault.html"
+    - title: Configurar licencias
+      url: "/task-licensing.html"
+    - title: Administrar relaciones de sincronización
+      url: "/task-managing-relationships.html"
+    - title: Gestionar corredores de datos
+      url: "/task-managing-data-brokers.html"
+    - title: Ver informes para ajustar su configuración
+      url: "/task-managing-reports.html"
+    - title: Desinstalar un agente de datos
+      url: "/task-uninstalling.html"
+  - title: Automatizar con la API REST
+    url: "/api-sync.html"
+  - title: Conceptos
+    entries:
+    - title: Licencias
+      url: "/concept-licensing.html"
+    - title: Privacidad de datos
+      url: "/concept-privacy.html"
+    - title: Preguntas frecuentes
+      url: "/faq.html"
+  - title: Conocimiento y apoyo
+    entries:
+    - title: Regístrese para recibir asistencia
+      url: "/task-support-registration.html"
+    - title: Obtener ayuda
+      url: "/task-get-help.html"
+  - title: Avisos legales
+    url: "/legal-notices.html"
+product-family:
+  name: NetApp Data Services
+  repo: data-services-family

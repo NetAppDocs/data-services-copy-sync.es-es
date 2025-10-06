@@ -1,0 +1,123 @@
+---
+sidebar: sidebar 
+permalink: reference-networking.html 
+keywords: networking, 443, port, ports, port 443, connections, connectivity, path, paths, vpn, copy and sync, netapp, bluexp, cloud sync,connectivity,data broker 
+summary: La red para NetApp Copy and Sync incluye conectividad entre el grupo de agentes de datos y las ubicaciones de origen y destino, y una conexión a Internet saliente desde los agentes de datos a través del puerto 443. 
+---
+= Descripción general de redes para NetApp Copy and Sync
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+La red para NetApp Copy and Sync incluye conectividad entre el grupo de agentes de datos y las ubicaciones de origen y destino, y una conexión a Internet saliente desde los agentes de datos a través del puerto 443.
+
+
+
+== Ubicación del corredor de datos
+
+Un grupo de corredores de datos consta de uno o más corredores de datos instalados en la nube o en sus instalaciones.
+
+
+
+=== Broker de datos en la nube
+
+La siguiente imagen muestra un agente de datos ejecutándose en la nube, ya sea en AWS, Google Cloud o Azure.  El origen y el destino pueden estar en cualquier ubicación, siempre que haya una conexión con el agente de datos.  Por ejemplo, es posible que tenga una conexión VPN desde su centro de datos a su proveedor de nube.
+
+
+NOTE: Cuando Copy and Sync implementa el agente de datos en AWS, Azure o Google Cloud, crea un grupo de seguridad que habilita la comunicación saliente requerida.
+
+image:diagram_networking_cloud2.png["Un diagrama que muestra Copiar y sincronizar, el agente de datos que se ejecuta en la nube y las conexiones al origen y al destino."]
+
+
+
+=== Corredor de datos en sus instalaciones
+
+La siguiente imagen muestra el agente de datos ejecutándose localmente en un centro de datos.  Nuevamente, la fuente y el destino pueden estar en cualquier ubicación, siempre que haya una conexión con el agente de datos.
+
+image:diagram_networking_onprem.png["Un diagrama que muestra Copiar y sincronizar, el agente de datos ejecutándose localmente y las conexiones al origen y al destino."]
+
+
+
+== Requisitos de red
+
+* El origen y el destino deben tener una conexión de red al grupo de intermediarios de datos.
++
+Por ejemplo, si un servidor NFS está en su centro de datos y un agente de datos está en AWS, entonces necesita una conexión de red (VPN o Conexión directa) desde su red a la VPC.
+
+* Un agente de datos necesita una conexión a Internet saliente para poder sondear Copy and Sync en busca de tareas a través del puerto 443.
+* NetApp recomienda configurar los intermediarios de origen, destino y datos para utilizar un servicio de Protocolo de tiempo de red (NTP).  La diferencia de tiempo entre los tres componentes no debe exceder los 5 minutos.
+
+
+
+
+== Puntos finales de red
+
+El agente de datos de NetApp requiere acceso a Internet saliente a través del puerto 443 para comunicarse con Copy and Sync y para contactar con algunos otros servicios y repositorios.  Su navegador web local también requiere acceso a los puntos finales para determinadas acciones.  Si necesita limitar la conectividad saliente, consulte la siguiente lista de puntos finales al configurar su firewall para el tráfico saliente.
+
+
+
+=== Puntos finales del intermediario de datos
+
+Un corredor de datos se pone en contacto con los siguientes puntos finales:
+
+[cols="38,62"]
+|===
+| Puntos finales | Objetivo 
+
+
+| \ https://olcentgbl.trafficmanager.net | Para ponerse en contacto con un repositorio para actualizar los paquetes de CentOS para el host del agente de datos.  Solo se contacta con este punto final si instala manualmente el agente de datos en un host CentOS. 
+
+
+| \ https://rpm.nodesource.com \ https://registry.npmjs.org \ https://nodejs.org: | Para ponerse en contacto con los repositorios para actualizar Node.js, npm y otros paquetes de terceros utilizados en el desarrollo. 
+
+
+| \ https://tgz.pm2.io | Para acceder a un repositorio para actualizar PM2, que es un paquete de terceros utilizado para monitorear Copiar y Sincronizar. 
+
+
+| \ https://sqs.us-east-1.amazonaws.com \ https://kinesis.us-east-1.amazonaws.com | Para ponerse en contacto con los servicios de AWS que Copy and Sync utiliza para las operaciones (poner en cola archivos, registrar acciones y enviar actualizaciones al agente de datos). 
+
+
+| \ https://s3._region_.amazonaws.com Por ejemplo: s3.us-east-2.amazonaws.com:443https://docs.aws.amazon.com/general/latest/gr/rande.html#s3_region["Consulte la documentación de AWS para obtener una lista de puntos finales de S3"^] | Para ponerse en contacto con Amazon S3 cuando una relación de sincronización incluye un bucket S3. 
+
+
+| \ https://s3.amazonaws.com/ | Cuando descarga registros del agente de datos desde Copy and Sync, el agente de datos comprime su directorio de registros y carga los registros en un depósito S3 predefinido en la región us-east-1. 
+
+
+| \ https://storage.googleapis.com/ | Para ponerse en contacto con Google Cloud cuando una relación de sincronización utiliza un depósito de GCP. 
+
+
+| https://_storage-account_.blob.core.windows.net[]Si utiliza Azure Data Lake Gen2:https://_storage-account_.dfs.core.windows.net[] Donde _storage-account_ es la cuenta de almacenamiento de origen del usuario. | Para abrir el proxy en la dirección de la cuenta de almacenamiento de Azure de un usuario. 
+
+
+| \ https://cf.cloudsync.netapp.com \ https://repo.cloudsync.netapp.com | Para contactar con Copiar y Sincronizar. 
+
+
+| \ https://support.netapp.com | Para ponerse en contacto con el soporte de NetApp cuando se utiliza una licencia BYOL para relaciones de sincronización. 
+
+
+| \ https://fedoraproject.org | Para instalar 7z en la máquina virtual del agente de datos durante la instalación y las actualizaciones.  Se necesita 7z para enviar mensajes de AutoSupport al soporte técnico de NetApp . 
+
+
+| \ https://sts.amazonaws.com \ https://sts.us-east-1.amazonaws.com | Para verificar las credenciales de AWS cuando el agente de datos se implementa en AWS o cuando se implementa en sus instalaciones y se proporcionan las credenciales de AWS.  El agente de datos se comunica con este punto final durante la implementación, cuando se actualiza y cuando se reinicia. 
+
+
+| \ https://api.bluexp.netapp.com \ https://netapp-cloud-account.auth0.com | Para ponerse en contacto con NetApp Data Classification cuando utiliza la clasificación para seleccionar los archivos de origen para una nueva relación de sincronización. 
+
+
+| \ https://pubsub.googleapis.com | Si se crea una relación de sincronización continua desde una cuenta de almacenamiento de Google. 
+
+
+| https://_storage-account_.queue.core.windows.net[]\ https://management.azure.com/subscriptions/ ${_subscriptionId_} /resourceGroups/${_resourceGroup_}/providers/Microsoft.EventGrid/* Donde _storage-account_ es la cuenta de almacenamiento de origen del usuario, _subscriptionid_ es el ID de suscripción de origen y _resourceGroup_ es el grupo de recursos de origen. | Si se crea una relación de sincronización continua desde una cuenta de almacenamiento de Azure. 
+|===
+
+
+=== Puntos finales del navegador web
+
+Su navegador web necesita acceso al siguiente punto final para descargar registros con fines de resolución de problemas:
+
+registros.cloudsync.netapp.com:443

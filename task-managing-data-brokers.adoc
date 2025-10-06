@@ -1,0 +1,306 @@
+---
+sidebar: sidebar 
+permalink: task-managing-data-brokers.html 
+keywords: manage data brokers, manage data broker groups, data broker performance, data broker configuration, data broker removal, remove data broker, delete data broker, groups, data broker group, rename data broker group, add data broker, data broker cpu, data broker ram, data broker status, edit group name, change group name, modify group name 
+summary: Un agente de datos sincroniza datos desde una ubicación de origen a una ubicación de destino.  Se requiere un agente de datos para cada relación de sincronización que cree.  Administre corredores de datos agregando un nuevo corredor de datos a un grupo, viendo información sobre los corredores de datos y más. 
+---
+= Administrar grupos de intermediarios de datos en NetApp Copy and Sync
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ./media/
+
+
+[role="lead"]
+Un grupo de intermediarios de datos en NetApp Copy and Sync sincroniza datos desde una ubicación de origen a una ubicación de destino.  Se requiere al menos un agente de datos en un grupo para cada relación de sincronización que cree.  Administre grupos de corredores de datos agregando un nuevo corredor de datos a un grupo, viendo información sobre los grupos y más.
+
+
+
+== Cómo funcionan los grupos de corredores de datos
+
+Un grupo de corredores de datos puede incluir uno o más corredores de datos.  Agrupar corredores de datos puede ayudar a mejorar el rendimiento de las relaciones de sincronización.
+
+
+
+=== Los grupos pueden gestionar varias relaciones
+
+Un grupo de corredores de datos puede administrar una o más relaciones de sincronización a la vez.
+
+Por ejemplo, digamos que tienes tres relaciones:
+
+* La relación 1 está gestionada por el grupo de corredores de datos A
+* La relación 2 está gestionada por el grupo de corredores de datos B
+* La relación 3 está gestionada por el grupo de corredores de datos A
+
+
+Desea acelerar el rendimiento de la relación 1, por lo que agrega un nuevo agente de datos al grupo de agentes de datos A. Debido a que el grupo A también administra la relación de sincronización 3, el rendimiento de sincronización de la relación también se acelera automáticamente.
+
+
+
+=== Número de corredores de datos en un grupo
+
+En muchos casos, un único agente de datos puede satisfacer los requisitos de rendimiento para una relación de sincronización.  Si no es así, puede acelerar el rendimiento de la sincronización agregando agentes de datos adicionales al grupo.  Pero primero debes comprobar otros factores que pueden afectar el rendimiento de la sincronización. link:faq.html#how-many-data-brokers-are-required-in-a-group["Obtenga más información sobre cómo determinar cuándo se requieren varios corredores de datos"] .
+
+
+
+== Recomendaciones de seguridad
+
+Para garantizar la seguridad de su máquina de agente de datos, NetApp recomienda lo siguiente:
+
+* SSH no debería permitir el reenvío X11
+* SSH no debe permitir el reenvío de conexión TCP
+* SSH no debería permitir túneles
+* SSH no debe aceptar variables de entorno del cliente
+
+
+Estas recomendaciones de seguridad pueden ayudar a prevenir conexiones no autorizadas a la máquina del agente de datos.
+
+
+
+== Agregar un nuevo agente de datos a un grupo
+
+Hay varias formas de crear un nuevo corredor de datos:
+
+* Al crear una nueva relación de sincronización
++
+link:task-creating-relationships.html["Aprenda a crear un nuevo agente de datos al crear una relación de sincronización"] .
+
+* Desde la página *Administrar corredores de datos*, seleccione *Agregar nuevo corredor de datos*, lo que crea el corredor de datos en un nuevo grupo
+* Desde la página *Administrar corredores de datos* creando un nuevo corredor de datos en un grupo existente
+
+
+.Antes de empezar
+* No se pueden agregar corredores de datos a un grupo que administra una relación de sincronización cifrada.
+* Si desea crear un agente de datos en un grupo existente, el agente de datos debe ser un agente de datos local o el mismo tipo de agente de datos.
++
+Por ejemplo, si un grupo incluye un agente de datos de AWS, puede crear un agente de datos de AWS o un agente de datos local en ese grupo.  No se puede crear un agente de datos de Azure o un agente de datos de Google Cloud porque no son el mismo tipo de agente de datos.
+
+
+
+.Pasos para crear un agente de datos en un nuevo grupo
+. link:task-login-copyandsync.html["Iniciar sesión en Copiar y sincronizar"] .
+. Seleccione *Sincronizar > Administrar agentes de datos*.
+. Seleccione *Agregar nuevo agente de datos*.
+. Siga las instrucciones para crear el agente de datos.
++
+Para obtener ayuda, consulte las siguientes páginas:
+
++
+** link:task-installing-aws.html["Crear un agente de datos en AWS"]
+** link:task-installing-azure.html["Crear un agente de datos en Azure"]
+** link:task-installing-gcp.html["Crear un agente de datos en Google Cloud"]
+** link:task-installing-linux.html["Instalación del agente de datos en un host Linux"]
+
+
+
+
+.Pasos para crear un agente de datos en un grupo existente
+. link:task-login-copyandsync.html["Iniciar sesión en Copiar y sincronizar"] .
+. Seleccione *Sincronizar > Administrar agentes de datos*.
+. Seleccione el menú de acciones y seleccione *Agregar agente de datos*.
++
+image:screenshot_sync_group_add.png["Una captura de pantalla del menú de acciones que está disponible para cada agente de datos individual en un grupo."]
+
+. Siga las instrucciones para crear el agente de datos en el grupo.
++
+Para obtener ayuda, consulte las siguientes páginas:
+
++
+** link:task-installing-aws.html["Crear un agente de datos en AWS"]
+** link:task-installing-azure.html["Crear un agente de datos en Azure"]
+** link:task-installing-gcp.html["Crear un agente de datos en Google Cloud"]
+** link:task-installing-linux.html["Instalación del agente de datos en un host Linux"]
+
+
+
+
+
+
+== Editar el nombre de un grupo
+
+Cambie el nombre de un grupo de corredores de datos en cualquier momento.
+
+.Pasos
+. link:task-login-copyandsync.html["Iniciar sesión en Copiar y sincronizar"] .
+. Seleccione *Sincronizar > Administrar agentes de datos*.
+. Seleccione el menú de acciones y seleccione *Editar nombre del grupo*.
++
+image:screenshot_sync_group_edit.gif["Una captura de pantalla del menú de acciones que está disponible para cada agente de datos individual en un grupo."]
+
+. Introduzca un nuevo nombre y seleccione *Guardar*.
+
+
+.Resultado
+Copiar y sincronizar actualiza el nombre del grupo de intermediarios de datos.
+
+
+
+== Configurar una configuración unificada
+
+Si una relación de sincronización encuentra errores durante el proceso de sincronización, unificar la simultaneidad del grupo de intermediarios de datos puede ayudar a disminuir la cantidad de errores de sincronización.  Tenga en cuenta que los cambios en la configuración del grupo pueden afectar el rendimiento al ralentizar la transferencia.
+
+No recomendamos cambiar la configuración por su cuenta.  Debe consultar con NetApp para comprender cuándo cambiar la configuración y cómo cambiarla.
+
+.Pasos
+. link:task-login-copyandsync.html["Iniciar sesión en Copiar y sincronizar"] .
+. Seleccione *Administrar corredores de datos*.
+. Seleccione el icono de Configuración para un grupo de corredores de datos.
++
+image:screenshot_sync_group_settings.png["Una captura de pantalla que muestra el ícono de Configuración para un grupo de corredores de datos."]
+
+. Cambie la configuración según sea necesario y luego seleccione *Unificar configuración*.
++
+Tenga en cuenta lo siguiente:
+
++
+** Puede seleccionar qué configuraciones desea cambiar (no es necesario que cambie las cuatro a la vez).
+** Después de enviar una nueva configuración a un agente de datos, este se reinicia automáticamente y utiliza la nueva configuración.
+** Puede tomar hasta un minuto hasta que este cambio se realice y sea visible en la interfaz Copiar y sincronizar.
+** Si un agente de datos no se está ejecutando, su configuración no cambiará porque Copiar y sincronizar no puede comunicarse con él.  La configuración cambiará después de que se reinicie el agente de datos.
+** Después de establecer una configuración unificada, cualquier nuevo agente de datos utilizará automáticamente la nueva configuración.
+
+
+
+
+
+
+== Mover corredores de datos entre grupos
+
+Mueva un agente de datos de un grupo a otro si necesita acelerar el rendimiento del grupo de agentes de datos de destino.
+
+Por ejemplo, si un agente de datos ya no administra una relación de sincronización, puede moverlo fácilmente a otro grupo que sí administre relaciones de sincronización.
+
+.Limitaciones
+* Si un grupo de agentes de datos administra una relación de sincronización y solo hay un agente de datos en el grupo, no podrá mover ese agente de datos a otro grupo.
+* No se puede mover un agente de datos hacia o desde un grupo que administra relaciones de sincronización cifradas.
+* No se puede mover un agente de datos que se esté implementando actualmente.
+
+
+.Pasos
+. link:task-login-copyandsync.html["Iniciar sesión en Copiar y sincronizar"] .
+. Seleccione *Sincronizar > Administrar agentes de datos*.
+. Seleccionarimage:screenshot_sync_group_expand.gif["Una captura de pantalla del botón que le permite expandir la lista de corredores de datos en un grupo."] para ampliar la lista de corredores de datos en un grupo.
+. Seleccione el menú de acciones para un agente de datos y seleccione *Mover agente de datos*.
++
+image:screenshot_sync_group_remove.png["Una captura de pantalla del menú de acciones que está disponible para cada grupo de corredores de datos individual."]
+
+. Cree un nuevo grupo de corredores de datos o seleccione un grupo de corredores de datos existente.
+. Seleccione *Mover*.
+
+
+.Resultado
+Copiar y sincronizar mueve el agente de datos a un grupo de agentes de datos nuevo o existente.  Si no hay otros intermediarios de datos en el grupo anterior, Copiar y sincronizar lo elimina.
+
+
+
+== Actualizar la configuración del proxy
+
+Actualice la configuración de proxy de un agente de datos agregando detalles sobre una nueva configuración de proxy o editando la configuración de proxy existente.
+
+.Pasos
+. link:task-login-copyandsync.html["Iniciar sesión en Copiar y sincronizar"] .
+. Seleccione *Sincronizar > Administrar agentes de datos*.
+. Seleccionarimage:screenshot_sync_group_expand.gif["Una captura de pantalla del botón que le permite expandir la lista de corredores de datos en un grupo."] para ampliar la lista de corredores de datos en un grupo.
+. Seleccione el menú de acciones para un agente de datos y seleccione *Editar configuración de proxy*.
+. Especifique detalles sobre el proxy: nombre de host, número de puerto, nombre de usuario y contraseña.
+. Seleccione *Actualizar*.
+
+
+.Resultado
+Copiar y sincronizar actualiza el agente de datos para utilizar la configuración de proxy para el acceso a Internet.
+
+
+
+== Ver la configuración de un agente de datos
+
+Es posible que desee ver detalles sobre un agente de datos para identificar cosas como su nombre de host, dirección IP, CPU y RAM disponibles, y más.
+
+Copy and Sync proporciona los siguientes detalles sobre un agente de datos:
+
+* Información básica: ID de instancia, nombre de host, etc.
+* Red: Región, red, subred, IP privada, etc.
+* Software: distribución de Linux, versión del broker de datos, etc.
+* Hardware: CPU y RAM
+* Configuración: Detalles sobre los dos tipos de procesos principales del agente de datos: escáner y transferidor
++
+
+TIP: El escáner escanea el origen y el destino y decide qué se debe copiar.  El transferente es quien realiza la copia propiamente dicha.  El personal de NetApp puede usar estos detalles de configuración para sugerir acciones que puedan optimizar el rendimiento.
+
+
+
+.Pasos
+. link:task-login-copyandsync.html["Iniciar sesión en Copiar y sincronizar"] .
+. Seleccione *Sincronizar > Administrar agentes de datos*.
+. Seleccionarimage:screenshot_sync_group_expand.gif["Una captura de pantalla del botón que le permite expandir la lista de corredores de datos en un grupo."] para ampliar la lista de corredores de datos en un grupo.
+. Seleccionarimage:screenshot_sync_group_expand.gif["Una captura de pantalla del botón que le permite ampliar detalles sobre un corredor de datos."] para ver detalles sobre un corredor de datos.
++
+image:screenshot_sync_data_broker_details.gif["Una captura de pantalla de información sobre un corredor de datos."]
+
+
+
+
+
+== Abordar problemas con un corredor de datos
+
+Copiar y sincronizar muestra un estado para cada agente de datos que puede ayudarle a solucionar problemas.
+
+.Pasos
+. link:task-login-copyandsync.html["Iniciar sesión en Copiar y sincronizar"] .
+. Identifique cualquier corredor de datos que tenga un estado de "Desconocido" o "Fallido".
++
+image:screenshot_sync_broker_status.gif["Una captura de pantalla de la pantalla de estado de Copiar y sincronizar donde un agente de datos tiene un estado \"desconocido\""]
+
+. Pase el cursor sobre elimage:screenshot_sync_status_icon.gif["Un icono de \"información\""] Icono para ver el motivo del fallo.
+. Corrija el problema.
++
+Por ejemplo, es posible que necesite simplemente reiniciar el agente de datos si está fuera de línea, o es posible que necesite eliminar el agente de datos si falló la implementación inicial.
+
+
+
+
+
+== Eliminar un agente de datos de un grupo
+
+Puedes eliminar un agente de datos de un grupo si ya no es necesario o si la implementación inicial falló.  Esta acción solo elimina el intermediario de datos de los registros de Copiar y sincronizar.  Necesitará eliminar manualmente el agente de datos y cualquier recurso en la nube adicional.
+
+.Cosas que debes saber
+* Copiar y sincronizar elimina un grupo cuando se quita el último agente de datos del grupo.
+* No se puede eliminar el último agente de datos de un grupo si existe una relación que utiliza ese grupo.
+
+
+.Pasos
+. link:task-login-copyandsync.html["Iniciar sesión en Copiar y sincronizar"] .
+. Seleccione *Sincronizar > Administrar agentes de datos*.
+. Seleccionarimage:screenshot_sync_group_expand.gif["Una captura de pantalla del botón que le permite expandir la lista de corredores de datos en un grupo."] para ampliar la lista de corredores de datos en un grupo.
+. Seleccione el menú de acciones para un agente de datos y seleccione *Eliminar agente de datos*.
++
+image:screenshot_sync_group_remove.gif["Una captura de pantalla del menú de acciones que está disponible para cada grupo de corredores de datos individual."]
+
+. Seleccione *Eliminar agente de datos*.
+
+
+.Resultado
+Copiar y sincronizar elimina el agente de datos del grupo.
+
+
+
+== Eliminar un grupo de corredores de datos
+
+Si un grupo de corredores de datos ya no administra ninguna relación de sincronización, puede eliminar el grupo, lo que elimina todos los corredores de datos de Copiar y sincronizar.
+
+Los corredores de datos que Copy and Sync elimina solo se eliminan de los registros de Copy and Sync.  Necesitará eliminar manualmente la instancia del agente de datos de su proveedor de nube y cualquier recurso de nube adicional.
+
+.Pasos
+. link:task-login-copyandsync.html["Iniciar sesión en Copiar y sincronizar"] .
+. Seleccione *Sincronizar > Administrar agentes de datos*.
+. Seleccione el menú de acciones y seleccione *Eliminar grupo*.
++
+image:screenshot_sync_group_add.png["Una captura de pantalla del menú de acciones que está disponible para cada agente de datos individual en un grupo."]
+
+. Para confirmar, ingrese el nombre del grupo y seleccione *Eliminar grupo*.
+
+
+.Resultado
+Copiar y sincronizar elimina los intermediarios de datos y elimina el grupo.
