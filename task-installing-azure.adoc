@@ -14,7 +14,7 @@ summary: Al crear un nuevo agente de datos, elija la opción Azure Data Broker p
 
 
 [role="lead"]
-Cuando crea un nuevo grupo de agente de datos para NetApp Copy and Sync, elija Microsoft Azure para implementar el software del agente de datos en una nueva máquina virtual en una VNet.  NetApp Copy and Sync lo guía a través del proceso de instalación, pero los requisitos y pasos se repiten en esta página para ayudarlo a prepararse para la instalación.
+Cuando crea un nuevo grupo de agentes de datos para NetApp Copy and Sync, elija Microsoft Azure para implementar el software del agente de datos en una nueva máquina virtual en una VNet.  NetApp Copy and Sync lo guía a través del proceso de instalación, pero los requisitos y pasos se repiten en esta página para ayudarlo a prepararse para la instalación.
 
 También tiene la opción de instalar el agente de datos en un host Linux existente en la nube o en sus instalaciones. link:task-installing-linux.html["Más información"] .
 
@@ -116,7 +116,7 @@ Nota:
 
 . Los siguientes permisos solo son necesarios si planea habilitar el https://docs.netapp.com/us-en/bluexp-copy-sync/task-creating-relationships.html#settings["Configuración de sincronización continua"] en una relación de sincronización de Azure a otra ubicación de almacenamiento en la nube:
 +
-** 'Microsoft.Storage/storageAccounts/lectura',
+** 'Microsoft.Storage/storageAccounts/read',
 ** 'Microsoft.EventGrid/systemTopics/eventSubscriptions/write',
 ** 'Microsoft.EventGrid/systemTopics/eventSubscriptions/leer',
 ** 'Microsoft.EventGrid/systemTopics/eventSubscriptions/eliminar',

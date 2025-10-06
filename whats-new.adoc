@@ -24,15 +24,15 @@ Descubra las novedades de NetApp Copy and Sync.
 
 === La BlueXP copy and sync ahora es NetApp Copy and Sync
 
-La BlueXP copy and sync ha cambiado de nombre a Copia y sincronización de NetApp .
+La BlueXP copy and sync ha cambiado de nombre a NetApp Copy and Sync.
 
 
 
 === BlueXP ahora es NetApp Console
 
-La consola NetApp , construida sobre la base BlueXP mejorada y reestructurada, proporciona una gestión centralizada del almacenamiento NetApp y de los servicios de datos NetApp en entornos locales y en la nube a nivel empresarial, brindando información en tiempo real, flujos de trabajo más rápidos y una administración simplificada, que es altamente segura y compatible.
+La NetApp Console, construida sobre la base BlueXP mejorada y reestructurada, proporciona una gestión centralizada del almacenamiento de NetApp y de los NetApp Data Services en entornos locales y en la nube a nivel empresarial, brindando información en tiempo real, flujos de trabajo más rápidos y una administración simplificada, que es altamente segura y compatible.
 
-Para obtener más detalles sobre lo que ha cambiado, consulte lalink:https://docs.netapp.com/us-en/bluexp-relnotes/index.html["Notas de la versión de la consola de NetApp"] .
+Para obtener más detalles sobre lo que ha cambiado, consulte lalink:https://docs.netapp.com/us-en/bluexp-relnotes/index.html["Notas de la versión de la NetApp Console"] .
 
 
 
@@ -54,7 +54,7 @@ https://docs.netapp.com/us-en/bluexp-copy-sync/task-installing-linux.html#linux-
 
 === Corrección de errores
 
-Actualizamos NetApp Copy and Sync y el agente de datos para corregir algunos errores.  La nueva versión del broker de datos es 1.0.56.
+Actualizamos NetApp Copy and Sync y el agente de datos para corregir algunos errores. La nueva versión del broker de datos es 1.0.56.
 
 
 
@@ -64,7 +64,7 @@ Actualizamos NetApp Copy and Sync y el agente de datos para corregir algunos err
 
 === Corrección de errores
 
-Actualizamos NetApp Copy and Sync y el agente de datos para corregir algunos errores.  La nueva versión del corredor de datos es 1.0.55.
+Actualizamos NetApp Copy and Sync y el agente de datos para corregir algunos errores. La nueva versión del broker de datos es 1.0.55.
 
 
 
@@ -74,7 +74,7 @@ Actualizamos NetApp Copy and Sync y el agente de datos para corregir algunos err
 
 === Corrección de errores
 
-Actualizamos NetApp Copy and Sync y el agente de datos para corregir algunos errores.  La nueva versión del corredor de datos es 1.0.54.
+Actualizamos NetApp Copy and Sync y el agente de datos para corregir algunos errores. La nueva versión del broker de datos es 1.0.54.
 
 
 
@@ -84,7 +84,7 @@ Actualizamos NetApp Copy and Sync y el agente de datos para corregir algunos err
 
 === Corrección de errores
 
-Actualizamos Copy and Sync y el agente de datos para corregir algunos errores.  La nueva versión del corredor de datos es 1.0.53.
+Actualizamos Copy and Sync y el agente de datos para corregir algunos errores. La nueva versión del broker de datos es 1.0.53.
 
 
 
@@ -94,7 +94,7 @@ Actualizamos Copy and Sync y el agente de datos para corregir algunos errores.  
 
 === Corrección de errores
 
-NetApp Copy and Sync se actualizó para corregir algunos errores.  El agente de datos también se actualizó para aplicar actualizaciones de seguridad.  La nueva versión del corredor de datos es 1.0.52.
+NetApp Copy and Sync se actualizó para corregir algunos errores.  El agente de datos también se actualizó para aplicar actualizaciones de seguridad. La nueva versión del broker de datos es 1.0.52.
 
 
 
@@ -168,7 +168,7 @@ https://docs.netapp.com/us-en/bluexp-copy-sync/task-installing-azure.html#creati
 
 
 
-== 06 de agosto de 2023
+== 6 de agosto de 2023
 
 
 
@@ -200,7 +200,7 @@ https://docs.netapp.com/us-en/bluexp-copy-sync/reference-requirements.html#googl
 
 
 
-== 09 de julio de 2023
+== 9 de julio de 2023
 
 
 
@@ -308,7 +308,7 @@ https://docs.netapp.com/us-en/bluexp-copy-sync/task-creating-relationships.html#
 
 
 
-== 07 de marzo de 2023
+== 7 de marzo de 2023
 
 
 
@@ -465,7 +465,7 @@ https://docs.netapp.com/us-en/bluexp-copy-sync/task-creating-relationships.html#
 
 Ahora puedes recibir notificaciones de Cloud Sync por correo electrónico.
 
-Para recibir las notificaciones por correo electrónico, deberá habilitar la configuración *Notificaciones* en la relación de sincronización y luego configurar las configuraciones de Alertas y Notificaciones en la Consola de NetApp .
+Para recibir las notificaciones por correo electrónico, deberá habilitar la configuración *Notificaciones* en la relación de sincronización y luego configurar las configuraciones de Alertas y Notificaciones en la NetApp Console.
 
 https://docs.netapp.com/us-en/bluexp-copy-sync/task-managing-relationships.html#setting-up-notifications["Aprenda a configurar notificaciones"] .
 
@@ -508,7 +508,7 @@ Hemos agregado formas adicionales de configurar relaciones de sincronización di
 
 Ahora puede configurar una relación de sincronización desde la página Sistemas arrastrando y soltando un sistema sobre otro.
 
-image:https://raw.githubusercontent.com/NetAppDocs/bluexp-copy-sync/main/media/screenshot-enable-drag-and-drop.png["Una captura de pantalla que muestra el Centro de notificaciones en la consola de NetApp ."]
+image:https://raw.githubusercontent.com/NetAppDocs/bluexp-copy-sync/main/media/screenshot-enable-drag-and-drop.png["Una captura de pantalla que muestra el Centro de notificaciones en la NetApp Console."]
 
 
 
@@ -516,7 +516,7 @@ image:https://raw.githubusercontent.com/NetAppDocs/bluexp-copy-sync/main/media/s
 
 Ahora puede configurar una relación de sincronización para Azure Blob Storage o para Google Cloud Storage seleccionando el sistema en la página Sistemas y luego seleccionando la opción de sincronización en el panel derecho.
 
-image:https://raw.githubusercontent.com/NetAppDocs/bluexp-copy-sync/main/media/screenshot-enable-panel.png["Una captura de pantalla que muestra el Centro de notificaciones en la consola de NetApp ."]
+image:https://raw.githubusercontent.com/NetAppDocs/bluexp-copy-sync/main/media/screenshot-enable-panel.png["Una captura de pantalla que muestra el Centro de notificaciones en la NetApp Console."]
 
 
 
@@ -637,7 +637,7 @@ https://docs.netapp.com/us-en/bluexp-copy-sync/task-managing-relationships.html#
 
 Ahora está disponible una nueva configuración de *Notificaciones* para las relaciones de sincronización.  Esta configuración le permite elegir si desea recibir notificaciones de Cloud Sync en el Centro de notificaciones de la consola de NetApp .  Puede habilitar notificaciones para sincronizaciones de datos exitosas, fallidas y canceladas.
 
-image:https://raw.githubusercontent.com/NetAppDocs/bluexp-copy-sync/main/media/screenshot-notification-center.png["Una captura de pantalla que muestra el Centro de notificaciones en la consola de NetApp ."]
+image:https://raw.githubusercontent.com/NetAppDocs/bluexp-copy-sync/main/media/screenshot-notification-center.png["Una captura de pantalla que muestra el Centro de notificaciones en la NetApp Console."]
 
 https://docs.netapp.com/us-en/bluexp-copy-sync/task-managing-relationships.html#change-the-settings-for-a-sync-relationship["Obtenga más información sobre cómo cambiar la configuración de una relación de sincronización"] .
 
@@ -668,7 +668,7 @@ image:https://raw.githubusercontent.com/NetAppDocs/bluexp-copy-sync/main/media/s
 
 
 
-== 03 de marzo de 2022
+== 3 de marzo de 2022
 
 
 
@@ -682,7 +682,7 @@ image:https://raw.githubusercontent.com/NetAppDocs/bluexp-copy-sync/main/media/s
 
 === Mejora de la integración de Data Sense
 
-En la versión anterior, presentamos la integración de Cloud Sync con Cloud Data Sense.  En esta actualización, mejoramos la integración al facilitar la creación de la relación de sincronización.  Después de iniciar una sincronización de datos desde Cloud Data Sense, toda la información de origen está contenida en un solo paso y solo requiere que ingrese algunos detalles clave.
+En la versión anterior, presentamos la integración de Cloud Sync con Cloud Data Sense.  En esta actualización, mejoramos la integración al facilitar la creación de la relación de sincronización.  Después de iniciar una sincronización de datos desde Cloud Data Sense, toda la información de origen se contiene en un solo paso y solo requiere que ingrese algunos detalles clave.
 
 image:https://raw.githubusercontent.com/NetAppDocs/bluexp-copy-sync/main/media/screenshot-sync-data-sense.png["Una captura de pantalla que muestra la página de Integración de Data Sense que aparece después de iniciar una nueva sincronización directamente desde Cloud Data Sense."]
 
@@ -876,7 +876,7 @@ Ahora puede sincronizar datos hacia o desde un sistema de archivos de Amazon FSx
 
 
 
-== 01 de agosto de 2021
+== 1 de agosto de 2021
 
 
 
@@ -886,7 +886,7 @@ Cloud Sync ahora le permite actualizar el agente de datos con las últimas crede
 
 Esta mejora puede ayudar si sus políticas de seguridad requieren que actualice las credenciales periódicamente. link:task-managing-relationships.html["Aprenda a actualizar las credenciales"] .
 
-image:screenshot_sync_update_credentials.png["Una captura de pantalla que muestra la opción Actualizar credenciales en la página Sincronizar relaciones justo debajo del nombre de la fuente o el destino."]
+image:screenshot_sync_update_credentials.png["Una captura de pantalla que muestra la opción Actualizar credenciales en la página Sincronizar relaciones justo debajo del nombre del origen o el destino."]
 
 
 
@@ -922,7 +922,7 @@ Cuando elige el volumen de origen o de destino para Azure NetApp Files, Cloud Sy
 
 
 
-== 07 de julio de 2021
+== 7 de julio de 2021
 
 
 
@@ -1002,9 +1002,9 @@ link:task-managing-relationships.html#change-the-settings-for-a-sync-relationshi
 
 === El servicio independiente Cloud Sync se ha retirado
 
-El servicio independiente Cloud Sync ha sido retirado.  Ahora debería acceder a Cloud Sync directamente desde la consola de NetApp , donde están disponibles las mismas características y funcionalidades.
+El servicio independiente Cloud Sync ha sido retirado.  Ahora debería acceder a Cloud Sync directamente desde la NetApp Console, donde están disponibles las mismas características y funcionalidades.
 
-Después de iniciar sesión en la consola de NetApp , puede cambiar a la pestaña Sincronizar en la parte superior y ver sus relaciones, como antes.
+Después de iniciar sesión en la NetApp Console, puede cambiar a la pestaña Sincronizar en la parte superior y ver sus relaciones, como antes.
 
 
 

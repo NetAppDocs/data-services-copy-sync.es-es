@@ -4,7 +4,7 @@ permalink: faq.html
 keywords: community, forums, help, support, videos, faq, getting help, permissions, access control lists, acls, preserve, preserving, troubleshooting, support, encryption, smb 
 summary: Puede obtener ayuda con NetApp Copy and Sync y encontrar más información a través de varios recursos, incluidos foros, servicios de chat y videos. 
 ---
-= Preguntas frecuentes técnicas sobre NetApp Copy and Sync
+= Preguntas frecuentes técnicas NetApp Copy and Sync
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -24,7 +24,7 @@ Las siguientes preguntas están relacionadas con cómo comenzar a utilizar NetAp
 
 
 
-=== ¿Cómo funciona NetApp Copy and Sync?
+=== ¿Cómo funciona NetApp Copy and Sync ?
 
 Copy and Sync utiliza el software de agente de datos de NetApp para sincronizar datos desde un origen a un destino (esto se denomina _relación de sincronización_).
 
@@ -86,13 +86,13 @@ Tenga en cuenta los siguientes puntos clave sobre el uso de Copiar y sincronizar
 
 === ¿Cómo accedo a Copiar y sincronizar?
 
-Copiar y sincronizar está disponible desde la consola de NetApp .  Desde la navegación izquierda de la consola, seleccione *Movilidad* > *Copiar y sincronizar*.
+Copiar y sincronizar está disponible desde la NetApp Console.  Desde la navegación izquierda de la consola, seleccione *Movilidad* > *Copiar y sincronizar*.
 
 
 
 === ¿Qué es un grupo de corredores de datos?
 
-Cada corredor de datos pertenece a un grupo de corredores de datos.  Agrupar corredores de datos ayuda a mejorar el rendimiento de las relaciones de sincronización.
+Cada corredor de datos pertenece a un grupo de corredores de datos.  La agrupación de corredores de datos ayuda a mejorar el rendimiento de las relaciones de sincronización.
 
 
 
@@ -403,7 +403,7 @@ Seguro.  A continuación los puntos más importantes:
 +
 ** AWS: desde una plantilla de AWS CloudFormation
 ** Azure: desde Azure Resource Manager
-** Google: desde Google Cloud Deployment Manager
+** Google: Desde Google Cloud Deployment Manager
 ** Si utiliza su propio host Linux, deberá instalar manualmente el software
 
 

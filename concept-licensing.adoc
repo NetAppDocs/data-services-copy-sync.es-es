@@ -16,7 +16,7 @@ summary: Hay dos formas de pagar las relaciones de sincronización una vez final
 [role="lead"]
 Hay dos formas de pagar las relaciones de NetApp Copy and Sync una vez finalizada la prueba gratuita de 14 días.  La primera opción es suscribirse desde AWS o Azure con pago por uso o pago anual.  La segunda opción es comprar licencias directamente de NetApp.
 
-Las licencias deben administrarse a través de NetApp Copy and Sync o el sitio web correspondiente y *no* a través de la consola de NetApp .
+Las licencias deben administrarse a través de NetApp Copy and Sync o el sitio web correspondiente y *no* a través de la NetApp Console.
 
 
 

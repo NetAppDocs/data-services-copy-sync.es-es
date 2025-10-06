@@ -70,7 +70,7 @@ La actualización de credenciales es compatible con cualquier origen o destino p
 .Pasos
 . Desde el *Panel de sincronización*, vaya a una relación de sincronización que requiera credenciales y luego seleccione *Actualizar credenciales*.
 +
-image:screenshot_sync_update_credentials.png["Una captura de pantalla que muestra la opción Actualizar credenciales en la página Sincronizar relaciones justo debajo del nombre de la fuente o el destino."]
+image:screenshot_sync_update_credentials.png["Una captura de pantalla que muestra la opción Actualizar credenciales en la página Sincronizar relaciones justo debajo del nombre del origen o el destino."]
 
 . Ingrese las credenciales y seleccione *Actualizar*.
 +
@@ -90,7 +90,7 @@ Copiar y sincronizar actualiza las credenciales en el agente de datos.  Pueden p
 
 Una configuración de *Notificaciones* para cada relación de sincronización le permite elegir si desea recibir notificaciones de Copiar y Sincronizar en el Centro de notificaciones de la Consola de NetApp .  Puede habilitar notificaciones para sincronizaciones de datos exitosas, fallidas y canceladas.
 
-image:https://raw.githubusercontent.com/NetAppDocs/bluexp-copy-sync/main/media/screenshot-notification-center.png["Una captura de pantalla que muestra el Centro de notificaciones en la consola de NetApp ."]
+image:https://raw.githubusercontent.com/NetAppDocs/bluexp-copy-sync/main/media/screenshot-notification-center.png["Una captura de pantalla que muestra el Centro de notificaciones en la NetApp Console."]
 
 Además, también podrás recibir notificaciones por correo electrónico.
 

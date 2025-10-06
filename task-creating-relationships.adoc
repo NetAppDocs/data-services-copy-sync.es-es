@@ -16,13 +16,13 @@ summary: Cuando se crea una relación de sincronización, NetApp Copy and Sync c
 [role="lead"]
 Cuando se crea una relación de sincronización, NetApp Copy and Sync copia archivos del origen al destino.  Después de la copia inicial, Copiar y sincronizar sincroniza cualquier dato modificado cada 24 horas.
 
-Antes de poder crear algunos tipos de relaciones de sincronización, primero deberá crear un sistema en la consola de NetApp .
+Antes de poder crear algunos tipos de relaciones de sincronización, primero deberá crear un sistema en la NetApp Console.
 
 
 
 == Crear relaciones de sincronización para tipos específicos de sistemas
 
-Si desea crear relaciones de sincronización para cualquiera de los siguientes, primero deberá crear o descubrir el sistema:
+Si desea crear relaciones de sincronización para cualquiera de los siguientes, primero debe crear o descubrir el sistema:
 
 * Amazon FSx para ONTAP
 * Azure NetApp Files
@@ -58,7 +58,7 @@ image:screenshot_sync_we.gif["Una captura de pantalla que muestra las acciones d
 
 Utilice estos pasos para sincronizar datos hacia o desde un tipo de almacenamiento compatible que no sea Amazon FSx para ONTAP, Azure NetApp Files, Cloud Volumes ONTAP o clústeres de ONTAP locales.  Los pasos a continuación proporcionan un ejemplo que muestra cómo configurar una relación de sincronización desde un servidor NFS a un depósito S3.
 
-. En la consola de NetApp , seleccione *Sincronizar*.
+. En la NetApp Console, seleccione *Sincronizar*.
 . En la página *Definir relación de sincronización*, elija un origen y un destino.
 +
 Los siguientes pasos proporcionan un ejemplo de cómo crear una relación de sincronización desde un servidor NFS a un depósito S3.
@@ -255,8 +255,8 @@ Copiar y sincronizar comienza a sincronizar datos entre el origen y el destino. 
 
 Copy and Sync está integrado con NetApp Data Classification.  Desde NetApp Data Classification, puede seleccionar los archivos de origen que desea sincronizar con una ubicación de destino mediante Copiar y sincronizar.
 
-Después de iniciar una sincronización de datos desde NetApp Data Classification, toda la información de origen se contiene en un solo paso y solo requiere que ingrese algunos detalles clave.  A continuación, elige la ubicación de destino para la nueva relación de sincronización.
+Después de iniciar una sincronización de datos desde NetApp Data Classification, toda la información de origen está contenida en un solo paso y solo requiere que ingrese algunos detalles clave.  A continuación, elige la ubicación de destino para la nueva relación de sincronización.
 
-image:screenshot-sync-data-sense.png["Una captura de pantalla que muestra la página de integración de clasificación de datos de NetApp que aparece después de iniciar una nueva sincronización directamente desde Clasificación de datos de NetApp ."]
+image:screenshot-sync-data-sense.png["Una captura de pantalla que muestra la página de integración de NetApp Data Classification que aparece después de iniciar una nueva sincronización directamente desde NetApp Data Classification."]
 
 https://docs.netapp.com/us-en/bluexp-classification/task-managing-highlights.html#copying-and-synchronizing-source-files-to-a-target-system["Aprenda a iniciar una relación de sincronización desde NetApp Data Classification"^] .

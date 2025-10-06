@@ -2,9 +2,9 @@
 sidebar: sidebar 
 permalink: api-sync.html 
 keywords: api, apis, rest, restful, authorization, getting started, body, header, token, reference, expired token, expires, expired, token expired, list apis, 202, https status code 202, status code 202, id, id field, box 
-summary: Las capacidades de copia y sincronización de NetApp que están disponibles a través de la interfaz de usuario web también están disponibles a través de las API RESTful. 
+summary: Las capacidades de NetApp Copy and Sync que están disponibles a través de la interfaz de usuario web también están disponibles a través de las API RESTful. 
 ---
-= API de copia y sincronización de NetApp
+= API de NetApp Copy and Sync
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
@@ -14,16 +14,16 @@ summary: Las capacidades de copia y sincronización de NetApp que están disponi
 
 
 [role="lead"]
-Las capacidades de copia y sincronización de NetApp que están disponibles a través de la interfaz de usuario web también están disponibles a través de la API RESTful.
+Las capacidades de NetApp Copy and Sync que están disponibles a través de la interfaz de usuario web también están disponibles a través de la API RESTful.
 
 
 
 == Empezar
 
-Para comenzar a utilizar la API de copia y sincronización, debe obtener un token de usuario y su ID de cuenta de consola de NetApp .  Necesitará agregar el token y el ID de la cuenta al encabezado de Autorización cuando realice llamadas API.
+Para comenzar a utilizar la API de copia y sincronización, debe obtener un token de usuario y su ID de cuenta de NetApp Console .  Necesitará agregar el token y el ID de la cuenta al encabezado de Autorización cuando realice llamadas API.
 
 .Pasos
-. Obtenga un token de usuario desde la consola de NetApp .
+. Obtenga un token de usuario desde la NetApp Console.
 +
 [source, http]
 ----
@@ -43,7 +43,7 @@ Body:
 
 NOTE: Si utiliza una cuenta de correo electrónico personal sin ID de cliente, puede utilizar el ID de cliente predeterminado "QC3AgHk6qdbmC7Yyr82ApBwaaJLwRrNO".
 
-. Obtenga su ID de cuenta de consola de NetApp .
+. Obtenga su ID de cuenta de NetApp Console .
 +
 [source, http]
 ----

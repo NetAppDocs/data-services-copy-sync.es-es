@@ -110,7 +110,7 @@ NOTE: Cuando creas una clave, el archivo se genera y se descarga en tu máquina.
 
 == Habilitar el acceso a Microsoft Azure
 
-El acceso a Azure se define por relación proporcionando una cuenta de almacenamiento y una cadena de conexión en el asistente de sincronización de relación.
+El acceso a Azure se define por relación proporcionando una cuenta de almacenamiento y una cadena de conexión en el asistente de sincronización de relaciones.
 
 
 
@@ -143,7 +143,7 @@ La página de instrucciones se cargará en breve.  Necesitará seguir estas inst
 .. Seleccione una opción de instalación: *Sin proxy*, *Usar servidor proxy* o *Usar servidor proxy con autenticación*.
 +
 
-NOTE: El usuario debe ser un usuario local.  Los usuarios del dominio no son compatibles.
+NOTE: El usuario debe ser un usuario local. Los usuarios del dominio no son compatibles.
 
 .. Utilice los comandos para descargar e instalar el agente de datos.
 +

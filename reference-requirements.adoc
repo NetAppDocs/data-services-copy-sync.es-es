@@ -243,7 +243,7 @@ Para configurar la cuenta de servicio, siga las instrucciones de la documentaci�
 * https://developers.google.com/admin-sdk/directory/v1/guides/delegation#delegate_domain-wide_authority_to_your_service_account["Delegar autoridad de todo el dominio a su cuenta de servicio"^]
 
 
-Al editar el campo Ámbitos de OAuth, ingrese los siguientes ámbitos:
+Cuando edite el campo Ámbitos de OAuth, ingrese los siguientes ámbitos:
 
 * \ https://www.googleapis.com/auth/drive
 * \ https://www.googleapis.com/auth/drive.file
