@@ -270,6 +270,9 @@ NOTE: Copiar y sincronizar no admite la copia de ACL desde el almacenamiento de 
 link:task-copying-acls.html["Aprenda a copiar ACL entre recursos compartidos SMB"] .
 
 
+NOTE: Copy Sync copia las ACL (permisos) de SMB, pero no copia la propiedad de archivos o carpetas.  El atributo de propiedad no está incluido en la operación de copia de ACL SMB.  Si necesita conservar la propiedad al copiar datos entre recursos compartidos SMB, utilice `robocopy` para copiar manualmente la información de seguridad.  Por ejemplo, el `/copyall` Las copias de bandera incluyen ACL, propietario y datos de auditoría.
+
+
 
 === ¿Los permisos de datos NFS están sincronizados con la ubicación de destino?
 

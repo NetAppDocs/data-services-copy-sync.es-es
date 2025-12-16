@@ -55,6 +55,9 @@ SMB:: Las credenciales SMB que ingrese al configurar una relación de sincroniza
 NOTE: El agente de datos ignora los siguientes directorios de forma predeterminada: .snapshot, ~snapshot, .copy-offload
 
 
+NOTE: Al copiar datos de SMB en Cloud Volumes ONTAP mediante Copiar y sincronizar, no se conserva la propiedad de los archivos y las carpetas del sistema de origen.  Este comportamiento se produce porque Copy and Sync utiliza un cliente SMB de Linux, que asigna propiedad al usuario o a la cuenta de servicio utilizada para autenticar la transferencia.  Si bien se pueden conservar las listas de control de acceso, la información de propiedad y auditoría puede diferir del sistema de origen. Este es el comportamiento esperado.
+
+
 
 == [[s3]]Requisitos del bucket de Amazon S3
 
