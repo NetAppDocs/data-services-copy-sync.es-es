@@ -20,7 +20,7 @@ Cuando cree un nuevo grupo de agentes de datos para NetApp Copy and Sync, elija 
 
 == Requisitos del host Linux
 
-* *Compatibilidad con Node.js*: v21.2.0
+* *Compatibilidad con Node.js*: v25.x
 * *Sistema operativo*:
 +
 ** CentOS 8.0 y 8.5
@@ -35,7 +35,7 @@ CentOS Stream no es compatible.
 El comando `yum update` Debe ejecutarse en el host antes de instalar el agente de datos.
 
 +
-Un sistema Red Hat Enterprise Linux debe estar registrado en Red Hat Subscription Management.  Si no está registrado, el sistema no puede acceder a los repositorios para actualizar el software de terceros requerido durante la instalación.
+Un sistema Red Hat Enterprise Linux debe estar registrado en Red Hat Subscription Management. Si no está registrado, el sistema no puede acceder a los repositorios para actualizar el software de terceros necesario durante la instalación.
 
 
 
@@ -121,11 +121,11 @@ Puede instalar un agente de datos en un host Linux cuando crea una relación de 
 .Pasos
 . link:task-login-copyandsync.html["Iniciar sesión en Copiar y sincronizar"] .
 . Seleccione *Crear nueva sincronización*.
-. En la página *Definir relación de sincronización*, elija un origen y un destino y seleccione *Continuar*.
+. En la página *Definir relación de sincronización*, elige un origen y un destino y luego selecciona *Continuar*.
 +
 Complete los pasos hasta llegar a la página *Data Broker Group*.
 
-. En la página *Grupo de agente de datos*, seleccione *Crear agente de datos* y luego seleccione *Agente de datos local*.
+. En la página *Data Broker Group*, selecciona *Create Data Broker* y luego selecciona *On-Prem Data Broker*.
 +
 image:screenshot-on-prem.png["Una captura de pantalla de la página del agente de datos que le permite elegir entre un agente de datos de AWS, Azure, Google Cloud y On-Prem."]
 
@@ -133,13 +133,13 @@ image:screenshot-on-prem.png["Una captura de pantalla de la página del agente d
 
 NOTE: Aunque la opción está etiquetada como *_On-Prem_ Data Broker*, se aplica a un host Linux en sus instalaciones o en la nube.
 
-. Ingrese un nombre para el agente de datos y seleccione *Continuar*.
+. Introduce un nombre para el agente de datos y selecciona *Continuar*.
 +
-La página de instrucciones se cargará en breve.  Necesitará seguir estas instrucciones; incluyen un enlace único para descargar el instalador.
+Después de que se cargue la página de instrucciones, sigue las instrucciones que incluyen un enlace único para descargar el instalador.
 
 . En la página de instrucciones:
 +
-.. Seleccione si desea habilitar el acceso a *AWS*, *Google Cloud* o ambos.
+.. Elige habilitar el acceso a *AWS*, *Google Cloud* o ambos.
 .. Seleccione una opción de instalación: *Sin proxy*, *Usar servidor proxy* o *Usar servidor proxy con autenticación*.
 +
 
