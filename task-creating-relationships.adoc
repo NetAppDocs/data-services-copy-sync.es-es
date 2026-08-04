@@ -20,6 +20,7 @@ Antes de poder crear algunos tipos de relaciones de sincronización, primero deb
 
 
 
+[[create-sync-relationships-for-specific-types-of-systems]]
 == Crear relaciones de sincronización para tipos específicos de sistemas
 
 Si desea crear relaciones de sincronización para cualquiera de los siguientes, primero debe crear o descubrir el sistema:
@@ -34,13 +35,13 @@ Si desea crear relaciones de sincronización para cualquiera de los siguientes, 
 . link:task-login-copyandsync.html["Iniciar sesión en Copiar y sincronizar"] .
 . Crear o descubrir el sistema.
 +
-** https://docs.netapp.com/us-en/bluexp-fsx-ontap/start/task-getting-started-fsx.html["Cree un sistema Amazon FSx para ONTAP"^]
-** https://docs.netapp.com/us-en/bluexp-azure-netapp-files/task-quick-start.html["Configuración y detección de Azure NetApp Files"^]
-** https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-deploying-otc-aws.html["Lanzamiento de Cloud Volumes ONTAP en AWS"^]
-** https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-deploying-otc-azure.html["Lanzamiento de Cloud Volumes ONTAP en Azure"^]
-** https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-deploying-gcp.html["Lanzamiento de Cloud Volumes ONTAP en Google Cloud"^]
-** https://docs.netapp.com/us-en/bluexp-cloud-volumes-ontap/task-adding-systems.html["Agregar sistemas Cloud Volumes ONTAP existentes"^]
-** https://docs.netapp.com/us-en/bluexp-ontap-onprem/task-discovering-ontap.html["Descubriendo los clústeres de ONTAP"^]
+** https://docs.netapp.com/us-en/storage-management-fsx-ontap/start/task-getting-started-fsx.html["Cree un sistema Amazon FSx para ONTAP"^]
+** https://docs.netapp.com/us-en/storage-management-azure-netapp-files/task-quick-start.html["Configuración y detección de Azure NetApp Files"^]
+** https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-deploying-otc-aws.html["Lanzamiento de Cloud Volumes ONTAP en AWS"^]
+** https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-deploying-otc-azure.html["Lanzamiento de Cloud Volumes ONTAP en Azure"^]
+** https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-deploying-gcp.html["Lanzamiento de Cloud Volumes ONTAP en Google Cloud"^]
+** https://docs.netapp.com/us-en/storage-management-cloud-volumes-ontap/task-adding-systems.html["Agregar sistemas Cloud Volumes ONTAP existentes"^]
+** https://docs.netapp.com/us-en/storage-management-ontap-onprem/task-discovering-ontap.html["Descubriendo los clústeres de ONTAP"^]
 
 
 . Seleccione *Página de sistemas*.
@@ -54,6 +55,7 @@ image:screenshot_sync_we.gif["Una captura de pantalla que muestra las acciones d
 
 
 
+[[create-other-types-of-sync-relationships]]
 == Crear otros tipos de relaciones de sincronización
 
 Utilice estos pasos para sincronizar datos hacia o desde un tipo de almacenamiento compatible que no sea Amazon FSx para ONTAP, Azure NetApp Files, Cloud Volumes ONTAP o clústeres de ONTAP locales.  Los pasos a continuación proporcionan un ejemplo que muestra cómo configurar una relación de sincronización desde un servidor NFS a un depósito S3.
@@ -247,10 +249,11 @@ TIP: Esta misma función está disponible al sincronizar datos con StorageGRID e
 
 *Resultado*
 
-Copiar y sincronizar comienza a sincronizar datos entre el origen y el destino.  Están disponibles estadísticas de sincronización sobre cuánto tiempo tomó la sincronización, si se detuvo y cuántos archivos se copiaron, escanearon o eliminaron.  Luego podrás administrar tu https://docs.netapp.com/us-en/bluexp-copy-sync/task-managing-relationships.html["relaciones de sincronización"] , https://docs.netapp.com/us-en/bluexp-copy-sync/task-managing-data-brokers.html["Gestione sus corredores de datos"] , o https://docs.netapp.com/us-en/bluexp-copy-sync/task-managing-reports.html#creating-reports["Crea informes para optimizar tu rendimiento y configuración"] .
+Copy and Sync comienza a sincronizar los datos entre el origen y el destino. Las estadísticas de sincronización sobre cuánto tiempo tardó la sincronización, si se detuvo y cuántos archivos se copiaron, escanearon o eliminaron están disponibles. Luego puedes gestionar tus link:task-managing-relationships.html["relaciones de sincronización"], link:task-managing-data-brokers.html["Gestione sus corredores de datos"] o link:task-managing-reports.html#creating-reports["Crea informes para optimizar tu rendimiento y configuración"].
 
 
 
+[[create-sync-relationships-from-netapp-data-classification]]
 == Crear relaciones de sincronización desde NetApp Data Classification
 
 Copy and Sync está integrado con NetApp Data Classification.  Desde NetApp Data Classification, puede seleccionar los archivos de origen que desea sincronizar con una ubicación de destino mediante Copiar y sincronizar.
@@ -259,4 +262,4 @@ Después de iniciar una sincronización de datos desde NetApp Data Classificatio
 
 image:screenshot-sync-data-sense.png["Una captura de pantalla que muestra la página de integración de NetApp Data Classification que aparece después de iniciar una nueva sincronización directamente desde NetApp Data Classification."]
 
-https://docs.netapp.com/us-en/bluexp-classification/task-managing-highlights.html#copying-and-synchronizing-source-files-to-a-target-system["Aprenda a iniciar una relación de sincronización desde NetApp Data Classification"^] .
+https://docs.netapp.com/us-en/data-services-data-classification/concept-classification.html["Aprenda a iniciar una relación de sincronización desde NetApp Data Classification"^].

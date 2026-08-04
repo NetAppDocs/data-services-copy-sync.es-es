@@ -16,10 +16,11 @@ summary: Cree y visualice informes para obtener información que pueda utilizar 
 [role="lead"]
 Cree y visualice informes en NetApp Copy and Sync para obtener información que pueda usar con la ayuda del personal de NetApp para ajustar la configuración de un agente de datos y mejorar el rendimiento.
 
-Cada informe proporciona detalles detallados sobre una ruta en una relación de sincronización.  Incluirá cuántos directorios, archivos y enlaces simbólicos hay, la distribución del tamaño de los archivos, qué tan profundos y anchos son los directorios, el tiempo de modificación y el tiempo de acceso.  Esto difiere de las estadísticas de sincronización, que están disponibles en el panel de control después https://docs.netapp.com/us-en/bluexp-copy-sync/task-creating-relationships.html["creando y completando con éxito una sincronización"] .
+Cada informe ofrece detalles exhaustivos sobre una ruta dentro de una relación de sincronización. Incluirá cuántos directorios, archivos y enlaces simbólicos hay, la distribución del tamaño de los archivos, qué tan profundos y anchos son los directorios, la hora de modificación y el tiempo de acceso. Esto difiere de las estadísticas de sincronización, que están disponibles en el panel de control después de link:task-creating-relationships.html["creando y completando con éxito una sincronización"].
 
 
 
+[[create-reports]]
 == Crear informes
 
 Cada vez que se crea un informe, Copiar y sincronizar escanea la ruta y luego compila los detalles en un informe.
@@ -48,6 +49,7 @@ image:screenshot_sync_report_object.gif["Un informe que muestra la cantidad de e
 
 
 
+[[download-reports]]
 == Descargar informes
 
 Puedes descargar un informe en PDF para poder verlo sin conexión o compartirlo.
@@ -64,6 +66,7 @@ image:screenshot-sync-download-report.png["Una captura de pantalla de la opción
 
 
 
+[[view-report-errors]]
 == Ver errores del informe
 
 La tabla Rutas identifica si hay errores presentes en el informe más reciente.  Un error identifica un problema que Copy and Sync enfrentó al escanear la ruta.
@@ -88,6 +91,7 @@ Después de resolver el problema, el error no debería aparecer la próxima vez 
 
 
 
+[[delete-reports]]
 == Eliminar informes
 
 Es posible que elimines un informe que contenga un error que hayas corregido o que esté relacionado con una relación de sincronización que hayas eliminado.

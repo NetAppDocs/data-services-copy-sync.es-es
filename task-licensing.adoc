@@ -28,6 +28,7 @@ Las licencias deben administrarse a través de NetApp Copy and Sync o el sitio w
 
 
 
+[[awssubscribe-from-aws]]
 == [[aws]]Suscribirse desde AWS
 
 AWS le permite pagar según su uso o pagar anualmente.
@@ -54,6 +55,7 @@ video::796ffd6d-cade-4750-8504-b24c010b225d[panopto]
 
 
 
+[[azuresubscribe-from-azure]]
 == [[azure]]Suscribirse desde Azure
 
 Azure le permite pagar por uso o pagar anualmente.
@@ -82,6 +84,7 @@ video::a6a39447-b7b1-42f6-9c89-b24c010b21b9[panopto]
 
 
 
+[[licensespurchase-licenses-from-netapp-and-add-them-to-copy-and-sync]]
 == [[licencias]]Compre licencias de NetApp y agréguelas a Copiar y sincronizar
 
 Para pagar sus relaciones de sincronización por adelantado, debe comprar una o más licencias y agregarlas a Copiar y sincronizar.
@@ -109,6 +112,7 @@ Necesitará el número de serie de su licencia y el nombre de usuario y la contr
 
 
 
+[[update-a-license]]
 == Actualizar una licencia
 
 Si extendió una licencia de Copiar y sincronizar que compró en NetApp, la nueva fecha de vencimiento no se actualizará automáticamente en Copiar y sincronizar.  Debe agregar la licencia nuevamente para actualizar la fecha de vencimiento.  Las licencias deben administrarse a través de Copy and Sync o el sitio web correspondiente y *no* a través de las suscripciones de la NetApp Console .

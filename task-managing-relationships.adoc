@@ -18,6 +18,7 @@ Puede administrar las relaciones de sincronización en NetApp Copy and Sync en c
 
 
 
+[[perform-an-immediate-data-sync]]
 == Realizar una sincronización de datos inmediata
 
 En lugar de esperar a la próxima sincronización programada, puede sincronizar inmediatamente los datos entre el origen y el destino.
@@ -33,6 +34,7 @@ Copiar y sincronizar inicia el proceso de sincronización de datos para la relac
 
 
 
+[[accelerate-sync-performance]]
 == Acelerar el rendimiento de la sincronización
 
 Acelere el rendimiento de una relación de sincronización agregando un agente de datos adicional al grupo que administra la relación.  El agente de datos adicional debe ser un agente de datos _nuevo_.
@@ -61,6 +63,7 @@ Copiar y sincronizar agrega el nuevo agente de datos al grupo.  Se debe acelerar
 
 
 
+[[update-credentials]]
 == Actualizar credenciales
 
 Puede actualizar el agente de datos con las últimas credenciales del origen o el destino en una relación de sincronización existente.  Actualizar las credenciales puede ayudar si sus políticas de seguridad requieren que actualice las credenciales periódicamente.
@@ -86,11 +89,10 @@ Copiar y sincronizar actualiza las credenciales en el agente de datos.  Pueden p
 
 
 
+[[set-up-notifications]]
 == Configurar notificaciones
 
 Una configuración de *Notificaciones* para cada relación de sincronización le permite elegir si desea recibir notificaciones de Copiar y Sincronizar en el Centro de notificaciones de la Consola de NetApp .  Puede habilitar notificaciones para sincronizaciones de datos exitosas, fallidas y canceladas.
-
-image:https://raw.githubusercontent.com/NetAppDocs/bluexp-copy-sync/main/media/screenshot-notification-center.png["Una captura de pantalla que muestra el Centro de notificaciones en la NetApp Console."]
 
 Además, también podrás recibir notificaciones por correo electrónico.
 
@@ -117,6 +119,7 @@ Ahora recibirá notificaciones de Copiar y Sincronizar en el Centro de notificac
 
 
 
+[[change-the-settings-for-a-sync-relationship]]
 == Cambiar la configuración de una relación de sincronización
 
 Modifique las configuraciones que definen cómo se sincronizan y mantienen los archivos y carpetas de origen en la ubicación de destino.
@@ -210,12 +213,14 @@ Copiar y sincronizar modifica la relación de sincronización con la nueva confi
 
 
 
+[[delete-relationships]]
 == Eliminar relaciones
 
 Puede eliminar una relación de sincronización si ya no necesita sincronizar datos entre el origen y el destino.  Esta acción no elimina el grupo de corredores de datos (ni las instancias individuales de corredores de datos) y no elimina datos del destino.
 
 
 
+[[option-1-delete-a-single-sync-relationship]]
 === Opción 1: Eliminar una sola relación de sincronización
 
 .Pasos
@@ -228,6 +233,7 @@ Copiar y sincronizar elimina la relación de sincronización.
 
 
 
+[[option-2-delete-multiple-sync-relationships]]
 === Opción 2: Eliminar múltiples relaciones de sincronización
 
 .Pasos

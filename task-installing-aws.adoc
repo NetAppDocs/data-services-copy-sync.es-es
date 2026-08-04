@@ -20,18 +20,21 @@ También tiene la opción de instalar el agente de datos en un host Linux existe
 
 
 
+[[supported-aws-regions]]
 == Regiones de AWS compatibles
 
 Se admiten todas las regiones excepto la de China.
 
 
 
+[[root-privileges]]
 == Privilegios de root
 
 El software del intermediario de datos se ejecuta automáticamente como root en el host Linux.  Ejecutarse como root es un requisito para las operaciones del agente de datos.  Por ejemplo, para montar acciones.
 
 
 
+[[networking-requirements]]
 == Requisitos de red
 
 * El agente de datos necesita una conexión a Internet saliente para poder sondear Copy and Sync en busca de tareas a través del puerto 443.
@@ -46,12 +49,14 @@ Si necesita limitar la conectividad saliente, consultelink:reference-networking.
 
 
 
+[[permissions-required-to-deploy-the-data-broker-in-aws]]
 == Permisos necesarios para implementar el agente de datos en AWS
 
 La cuenta de usuario de AWS que utilice para implementar el agente de datos debe tener los permisos incluidos en https://s3.amazonaws.com/metadata.datafabric.io/docs/aws_iam_policy.json["Esta política proporcionada por NetApp"^] .
 
 
 
+[[iamrequirements-to-use-your-own-iam-role-with-the-aws-data-broker]]
 == [[iam]]Requisitos para usar su propio rol de IAM con el agente de datos de AWS
 
 Cuando Copy and Sync implementa el agente de datos, crea una función de IAM para la instancia del agente de datos. Puede implementar el agente de datos utilizando su propio rol de IAM, si lo prefiere.  Puede utilizar esta opción si su organización tiene políticas de seguridad estrictas.
@@ -66,6 +71,7 @@ Siga los pasos a continuación para especificar la función de IAM al implementa
 
 
 
+[[create-the-data-broker]]
 == Crear el agente de datos
 
 Hay algunas formas de crear un nuevo corredor de datos.  Estos pasos describen cómo instalar un agente de datos en AWS al crear una relación de sincronización.
@@ -118,6 +124,7 @@ Ha implementado un agente de datos en AWS y ha creado una nueva relación de sin
 
 
 
+[[details-about-the-data-broker-instance]]
 == Detalles sobre la instancia del agente de datos
 
 Copiar y sincronizar crea un agente de datos en AWS utilizando la siguiente configuración.

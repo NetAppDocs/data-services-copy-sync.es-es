@@ -20,6 +20,7 @@ Por ejemplo, es posible que desee sincronizar datos entre dos servidores NFS que
 
 
 
+[[how-data-in-flight-encryption-works]]
 == Cómo funciona el cifrado de datos en tránsito
 
 El cifrado de datos en tránsito cifra los datos NFS cuando se envían a través de la red entre dos intermediarios de datos.  La siguiente imagen muestra una relación entre dos servidores NFS y dos intermediarios de datos:
@@ -44,6 +45,7 @@ Si prefiere sincronizar datos con más frecuencia,link:task-managing-relationshi
 
 
 
+[[supported-nfs-versions]]
 == Versiones de NFS compatibles
 
 * Para los servidores NFS, el cifrado de datos en tránsito es compatible con las versiones 3, 4.0, 4.1 y 4.2 de NFS.
@@ -52,12 +54,14 @@ Si prefiere sincronizar datos con más frecuencia,link:task-managing-relationshi
 
 
 
+[[proxy-server-limitation]]
 == Limitación del servidor proxy
 
 Si crea una relación de sincronización cifrada, los datos cifrados se envían a través de HTTPS y no se pueden enrutar a través de un servidor proxy.
 
 
 
+[[what-youll-need-to-get-started]]
 == Lo que necesitarás para empezar
 
 Asegúrese de tener lo siguiente:
@@ -85,6 +89,7 @@ Si aún no ha implementado un agente de datos, revise los requisitos del agente 
 
 
 
+[[sync-nfs-data-using-data-in-flight-encryption]]
 == Sincronizar datos NFS mediante cifrado de datos en tránsito
 
 Cree una nueva relación de sincronización entre dos servidores NFS o entre Azure NetApp Files, habilite la opción de cifrado en tránsito y siga las indicaciones.

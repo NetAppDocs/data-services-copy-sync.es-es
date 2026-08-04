@@ -18,12 +18,14 @@ La red para NetApp Copy and Sync incluye conectividad entre el grupo de agentes 
 
 
 
+[[data-broker-location]]
 == Ubicación del corredor de datos
 
 Un grupo de corredores de datos consta de uno o más corredores de datos instalados en la nube o en sus instalaciones.
 
 
 
+[[data-broker-in-the-cloud]]
 === Broker de datos en la nube
 
 La siguiente imagen muestra un agente de datos ejecutándose en la nube, ya sea en AWS, Google Cloud o Azure.  El origen y el destino pueden estar en cualquier ubicación, siempre que haya una conexión con el agente de datos.  Por ejemplo, es posible que tenga una conexión VPN desde su centro de datos a su proveedor de nube.
@@ -35,6 +37,7 @@ image:diagram_networking_cloud2.png["Un diagrama que muestra Copiar y sincroniza
 
 
 
+[[data-broker-on-your-premises]]
 === Corredor de datos en sus instalaciones
 
 La siguiente imagen muestra el agente de datos ejecutándose localmente en un centro de datos.  Nuevamente, la fuente y el destino pueden estar en cualquier ubicación, siempre que haya una conexión con el agente de datos.
@@ -43,6 +46,7 @@ image:diagram_networking_onprem.png["Un diagrama que muestra Copiar y sincroniza
 
 
 
+[[networking-requirements]]
 == Requisitos de red
 
 * El origen y el destino deben tener una conexión de red al grupo de intermediarios de datos.
@@ -55,12 +59,14 @@ Por ejemplo, si un servidor NFS está en su centro de datos y un agente de datos
 
 
 
+[[networking-endpoints]]
 == Puntos finales de red
 
 El agente de datos de NetApp requiere acceso a Internet saliente a través del puerto 443 para comunicarse con Copy and Sync y para contactar con algunos otros servicios y repositorios.  Su navegador web local también requiere acceso a los puntos finales para determinadas acciones.  Si necesita limitar la conectividad saliente, consulte la siguiente lista de puntos finales al configurar su firewall para el tráfico saliente.
 
 
 
+[[data-broker-endpoints]]
 === Puntos finales del intermediario de datos
 
 Un corredor de datos se pone en contacto con los siguientes puntos finales:
@@ -116,6 +122,7 @@ Un corredor de datos se pone en contacto con los siguientes puntos finales:
 |===
 
 
+[[web-browser-endpoints]]
 === Puntos finales del navegador web
 
 Su navegador web necesita acceso al siguiente punto final para descargar registros con fines de resolución de problemas:

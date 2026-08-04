@@ -18,6 +18,7 @@ Cuando cree un nuevo grupo de agentes de datos para NetApp Copy and Sync, elija 
 
 
 
+[[linux-host-requirements]]
 == Requisitos del host Linux
 
 * *Compatibilidad con Node.js*: v25.x
@@ -50,12 +51,14 @@ SELinux aplica una política que bloquea las actualizaciones del software del ag
 
 
 
+[[root-privileges]]
 == Privilegios de root
 
 El software del intermediario de datos se ejecuta automáticamente como root en el host Linux.  Ejecutarse como root es un requisito para las operaciones del agente de datos.  Por ejemplo, para montar acciones.
 
 
 
+[[networking-requirements]]
 == Requisitos de red
 
 * El host Linux debe tener una conexión con el origen y el destino.
@@ -66,6 +69,7 @@ El software del intermediario de datos se ejecuta automáticamente como root en 
 
 
 
+[[enable-access-to-aws]]
 == Habilitar el acceso a AWS
 
 Si planea utilizar el agente de datos con una relación de sincronización que incluye un bucket S3, entonces debe preparar el host Linux para el acceso a AWS. Cuando instale el agente de datos, deberá proporcionar claves de AWS para un usuario de AWS que tenga acceso programático y permisos específicos.
@@ -86,6 +90,7 @@ Asegúrese de copiar las claves de AWS porque deberá especificarlas cuando inst
 
 
 
+[[enable-access-to-google-cloud]]
 == Habilitar el acceso a Google Cloud
 
 Si planea utilizar el agente de datos con una relación de sincronización que incluye un depósito de Google Cloud Storage, entonces debe preparar el host Linux para el acceso a Google Cloud. Cuando instale el agente de datos, deberá proporcionar una clave para una cuenta de servicio que tenga permisos específicos.
@@ -108,12 +113,14 @@ NOTE: Cuando creas una clave, el archivo se genera y se descarga en tu máquina.
 
 
 
+[[enable-access-to-microsoft-azure]]
 == Habilitar el acceso a Microsoft Azure
 
 El acceso a Azure se define por relación proporcionando una cuenta de almacenamiento y una cadena de conexión en el asistente de sincronización de relaciones.
 
 
 
+[[install-the-data-broker]]
 == Instalar el agente de datos
 
 Puede instalar un agente de datos en un host Linux cuando crea una relación de sincronización.

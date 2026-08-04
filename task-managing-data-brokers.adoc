@@ -18,12 +18,14 @@ Un grupo de intermediarios de datos en NetApp Copy and Sync sincroniza datos des
 
 
 
+[[how-data-broker-groups-work]]
 == Cómo funcionan los grupos de corredores de datos
 
 Un grupo de corredores de datos puede incluir uno o más corredores de datos.  Agrupar corredores de datos puede ayudar a mejorar el rendimiento de las relaciones de sincronización.
 
 
 
+[[groups-can-manage-several-relationships]]
 === Los grupos pueden gestionar varias relaciones
 
 Un grupo de corredores de datos puede administrar una o más relaciones de sincronización a la vez.
@@ -39,12 +41,14 @@ Desea acelerar el rendimiento de la relación 1, por lo que agrega un nuevo agen
 
 
 
+[[number-of-data-brokers-in-a-group]]
 === Número de corredores de datos en un grupo
 
 En muchos casos, un único agente de datos puede satisfacer los requisitos de rendimiento para una relación de sincronización.  Si no es así, puede acelerar el rendimiento de la sincronización agregando agentes de datos adicionales al grupo.  Pero primero debes comprobar otros factores que pueden afectar el rendimiento de la sincronización. link:faq.html#how-many-data-brokers-are-required-in-a-group["Obtenga más información sobre cómo determinar cuándo se requieren varios corredores de datos"] .
 
 
 
+[[security-recommendations]]
 == Recomendaciones de seguridad
 
 Para garantizar la seguridad de su máquina de agente de datos, NetApp recomienda lo siguiente:
@@ -59,6 +63,7 @@ Estas recomendaciones de seguridad pueden ayudar a prevenir conexiones no autori
 
 
 
+[[add-a-new-data-broker-to-a-group]]
 == Agregar un nuevo agente de datos a un grupo
 
 Hay varias formas de crear un nuevo corredor de datos:
@@ -118,6 +123,7 @@ Para obtener ayuda, consulte las siguientes páginas:
 
 
 
+[[edit-a-groups-name]]
 == Editar el nombre de un grupo
 
 Cambie el nombre de un grupo de corredores de datos en cualquier momento.
@@ -137,6 +143,7 @@ Copiar y sincronizar actualiza el nombre del grupo de intermediarios de datos.
 
 
 
+[[set-up-a-unified-configuration]]
 == Configurar una configuración unificada
 
 Si una relación de sincronización encuentra errores durante el proceso de sincronización, unificar la simultaneidad del grupo de intermediarios de datos puede ayudar a disminuir la cantidad de errores de sincronización.  Tenga en cuenta que los cambios en la configuración del grupo pueden afectar el rendimiento al ralentizar la transferencia.
@@ -166,6 +173,7 @@ Tenga en cuenta lo siguiente:
 
 
 
+[[move-data-brokers-between-groups]]
 == Mover corredores de datos entre grupos
 
 Mueva un agente de datos de un grupo a otro si necesita acelerar el rendimiento del grupo de agentes de datos de destino.
@@ -195,6 +203,7 @@ Copiar y sincronizar mueve el agente de datos a un grupo de agentes de datos nue
 
 
 
+[[update-proxy-configuration]]
 == Actualizar la configuración del proxy
 
 Actualice la configuración de proxy de un agente de datos agregando detalles sobre una nueva configuración de proxy o editando la configuración de proxy existente.
@@ -213,6 +222,7 @@ Copiar y sincronizar actualiza el agente de datos para utilizar la configuració
 
 
 
+[[view-a-data-brokers-configuration]]
 == Ver la configuración de un agente de datos
 
 Es posible que desee ver detalles sobre un agente de datos para identificar cosas como su nombre de host, dirección IP, CPU y RAM disponibles, y más.
@@ -242,6 +252,7 @@ image:screenshot_sync_data_broker_details.gif["Una captura de pantalla de inform
 
 
 
+[[address-issues-with-a-data-broker]]
 == Abordar problemas con un corredor de datos
 
 Copiar y sincronizar muestra un estado para cada agente de datos que puede ayudarle a solucionar problemas.
@@ -261,6 +272,7 @@ Por ejemplo, es posible que necesite simplemente reiniciar el agente de datos si
 
 
 
+[[remove-a-data-broker-from-a-group]]
 == Eliminar un agente de datos de un grupo
 
 Puedes eliminar un agente de datos de un grupo si ya no es necesario o si la implementación inicial falló.  Esta acción solo elimina el intermediario de datos de los registros de Copiar y sincronizar.  Necesitará eliminar manualmente el agente de datos y cualquier recurso en la nube adicional.
@@ -286,6 +298,7 @@ Copiar y sincronizar elimina el agente de datos del grupo.
 
 
 
+[[delete-a-data-broker-group]]
 == Eliminar un grupo de corredores de datos
 
 Si un grupo de corredores de datos ya no administra ninguna relación de sincronización, puede eliminar el grupo, lo que elimina todos los corredores de datos de Copiar y sincronizar.

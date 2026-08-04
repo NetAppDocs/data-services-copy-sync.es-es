@@ -16,11 +16,11 @@ summary: Utilice la NetApp Console para iniciar sesión en NetApp Copy and Sync.
 [role="lead"]
 Utilice la NetApp Console para iniciar sesión en NetApp Copy and Sync.
 
-Para iniciar sesión en la consola, puede usar sus credenciales del sitio de soporte de NetApp o puede registrarse para iniciar sesión en la nube de NetApp usando su correo electrónico y una contraseña. https://docs.netapp.com/us-en/bluexp-setup-admin/task-logging-in.html["Obtenga más información sobre cómo iniciar sesión"^] .
+Para iniciar sesión en la consola, puedes usar tus credenciales del sitio de soporte de NetApp o puedes registrarte para un inicio de sesión en la nube de NetApp usando tu correo electrónico y una contraseña. https://docs.netapp.com/us-en/console-setup-admin/task-logging-in.html["Obtenga más información sobre cómo iniciar sesión"^].
 
 NetApp Copy and Sync utiliza la gestión de acceso de identidad para controlar el acceso que tiene cada usuario a acciones específicas.
 
-*Rol de NetApp Console obligatorio* Rol de administrador de la organización. https://docs.netapp.com/us-en/bluexp-setup-admin/reference-iam-predefined-roles.html["Obtenga más información sobre los roles de acceso a la NetApp Console"^] .
+*Rol de NetApp Console requerido*: rol de administrador de la organización. https://docs.netapp.com/us-en/console-setup-admin/reference-iam-predefined-roles.html["Obtenga más información sobre los roles de acceso a la NetApp Console"^].
 
 .Pasos
 . Abra un navegador web y vaya a https://console.netapp.com/["NetApp Console"^] .

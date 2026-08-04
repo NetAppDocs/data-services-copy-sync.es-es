@@ -20,18 +20,21 @@ También tiene la opción de instalar el agente de datos en un host Linux existe
 
 
 
+[[supported-google-cloud-regions]]
 == Regiones de Google Cloud compatibles
 
 Se admiten todas las regiones.
 
 
 
+[[root-privileges]]
 == Privilegios de root
 
 El software del intermediario de datos se ejecuta automáticamente como root en el host Linux.  Ejecutarse como root es un requisito para las operaciones del agente de datos.  Por ejemplo, para montar acciones.
 
 
 
+[[networking-requirements]]
 == Requisitos de red
 
 * El agente de datos necesita una conexión a Internet saliente para poder sondear Copy and Sync en busca de tareas a través del puerto 443.
@@ -46,6 +49,7 @@ Si necesita limitar la conectividad saliente, consultelink:reference-networking.
 
 
 
+[[permissions-required-to-deploy-the-data-broker-in-google-cloud]]
 == Permisos necesarios para implementar el agente de datos en Google Cloud
 
 Asegúrese de que el usuario de Google Cloud que implementa el agente de datos tenga los siguientes permisos:
@@ -61,6 +65,7 @@ Asegúrese de que el usuario de Google Cloud que implementa el agente de datos t
 ----
 
 
+[[permissions-required-for-the-service-account]]
 == Permisos necesarios para la cuenta de servicio
 
 Al implementar el agente de datos, debe seleccionar una cuenta de servicio que tenga los siguientes permisos:
@@ -101,6 +106,7 @@ Notas:
 
 
 
+[[create-the-data-broker]]
 == Crear el agente de datos
 
 Hay algunas formas de crear un nuevo corredor de datos.  Estos pasos describen cómo instalar un agente de datos en Google Cloud cuando se crea una relación de sincronización.
@@ -144,6 +150,7 @@ Implementó un agente de datos en Google Cloud y creó una nueva relación de si
 
 
 
+[[provide-permissions-to-use-buckets-in-other-google-cloud-projects]]
 == Proporcionar permisos para usar buckets en otros proyectos de Google Cloud
 
 Cuando crea una relación de sincronización y elige Google Cloud Storage como origen o destino, Copiar y sincronizar le permite elegir entre los depósitos que la cuenta de servicio del agente de datos tiene permisos para usar.  De forma predeterminada, esto incluye los depósitos que están en el _mismo_ proyecto que la cuenta de servicio del agente de datos.  Pero puedes elegir depósitos de _otros_ proyectos si proporcionas los permisos necesarios.
@@ -163,6 +170,7 @@ Cuando configura una relación de sincronización, ahora puede elegir ese depós
 
 
 
+[[details-about-the-data-broker-vm-instance]]
 == Detalles sobre la instancia de VM del agente de datos
 
 Copiar y sincronizar crea un agente de datos en Google Cloud utilizando la siguiente configuración.

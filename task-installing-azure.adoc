@@ -20,18 +20,21 @@ También tiene la opción de instalar el agente de datos en un host Linux existe
 
 
 
+[[supported-azure-regions]]
 == Regiones de Azure compatibles
 
 Se admiten todas las regiones, excepto las de China, Gobierno de EE. UU. y Departamento de Defensa de EE. UU.
 
 
 
+[[root-privileges]]
 == Privilegios de root
 
 El software del intermediario de datos se ejecuta automáticamente como root en el host Linux.  Ejecutarse como root es un requisito para las operaciones del agente de datos.  Por ejemplo, para montar acciones.
 
 
 
+[[networking-requirements]]
 == Requisitos de red
 
 * El agente de datos necesita una conexión a Internet saliente para poder sondear el servicio de copia y sincronización en busca de tareas a través del puerto 443.
@@ -46,64 +49,15 @@ Si necesita limitar la conectividad saliente, consultelink:reference-networking.
 
 
 
+[[permissions-required-to-deploy-the-data-broker-in-azure]]
 == Permisos necesarios para implementar el agente de datos en Azure
 
 Asegúrese de que la cuenta de usuario de Azure que utiliza para implementar el agente de datos tenga los siguientes permisos:
 
-[source, json]
-----
-{
-    "Name": "Azure Data Broker",
-    "Actions": [
-					"Microsoft.Resources/subscriptions/read",
-                    "Microsoft.Resources/deployments/operationstatuses/read",
-                    "Microsoft.Resources/subscriptions/locations/read",
-                    "Microsoft.Network/networkInterfaces/read",
-                    "Microsoft.Network/virtualNetworks/subnets/read",
-                    "Microsoft.Resources/subscriptions/resourceGroups/write",
-                    "Microsoft.Resources/subscriptions/resourceGroups/delete",
-                    "Microsoft.Resources/deployments/write",
-                    "Microsoft.Resources/deployments/validate/action",
-                    "Microsoft.Resources/deployments/operationStatuses/read",
-                    "Microsoft.Resources/deployments/cancel/action",
-                    "Microsoft.Compute/virtualMachines/read",
-                    "Microsoft.Compute/virtualMachines/delete",
-                    "Microsoft.Compute/disks/delete",
-                    "Microsoft.Network/networkInterfaces/delete",
-                    "Microsoft.Network/publicIPAddresses/delete",
-                    "Microsoft.Network/networkSecurityGroups/securityRules/delete",
-                    "Microsoft.Resources/subscriptions/resourceGroups/write",
-                    "Microsoft.Compute/virtualMachines/delete",
-                    "Microsoft.Network/networkSecurityGroups/write",
-                    "Microsoft.Network/networkSecurityGroups/join/action",
-                    "Microsoft.Compute/disks/write",
-                    "Microsoft.Network/networkInterfaces/write",
-                    "Microsoft.Network/virtualNetworks/read",
-                    "Microsoft.Network/publicIPAddresses/write",
-                    "Microsoft.Compute/virtualMachines/write",
-                    "Microsoft.Compute/virtualMachines/extensions/write",
-                    "Microsoft.Resources/deployments/read",
-                    "Microsoft.Network/networkSecurityGroups/read",
-                    "Microsoft.Network/publicIPAddresses/read",
-                    "Microsoft.Network/virtualNetworks/subnets/join/action",
-                    "Microsoft.Network/publicIPAddresses/join/action",
-                    "Microsoft.Network/networkInterfaces/join/action",
-                    "Microsoft.Storage/storageAccounts/read",
-                    "Microsoft.EventGrid/systemTopics/eventSubscriptions/write",
-                    "Microsoft.EventGrid/systemTopics/eventSubscriptions/read",
-                    "Microsoft.EventGrid/systemTopics/eventSubscriptions/delete",
-                    "Microsoft.EventGrid/systemTopics/eventSubscriptions/getFullUrl/action",
-                    "Microsoft.EventGrid/systemTopics/eventSubscriptions/getDeliveryAttributes/action",
-                    "Microsoft.EventGrid/systemTopics/read",
-                    "Microsoft.EventGrid/systemTopics/write",
-                    "Microsoft.EventGrid/systemTopics/delete",
-                    "Microsoft.EventGrid/eventSubscriptions/write",
-                    "Microsoft.Storage/storageAccounts/write"
-                    "Microsoft.MarketplaceOrdering/offertypes/publishers/offers/plans/agreements/read"
-                    "Microsoft.MarketplaceOrdering/offertypes/publishers/offers/plans/agreements/write"
-                    "Microsoft.Network/networkSecurityGroups/securityRules/read",
-        	        "Microsoft.Network/networkSecurityGroups/read",
-----
+[]
+====
+{ "Name": "Azure Data Broker", "Actions": [ "Microsoft.Resources/subscriptions/read", "Microsoft.Resources/deployments/operationstatuses/read", "Microsoft.Resources/subscriptions/locations/read", "Microsoft.Network/networkInterfaces/read", "Microsoft.Network/virtualNetworks/subnets/read", "Microsoft.Resources/subscriptions/resourceGroups/write", "Microsoft.Resources/subscriptions/resourceGroups/delete", "Microsoft.Resources/deployments/write", "Microsoft.Resources/deployments/validate/action", "Microsoft.Resources/deployments/operationStatuses/read", "Microsoft.Resources/deployments/cancel/action", "Microsoft.Compute/virtualMachines/read", "Microsoft.Compute/virtualMachines/delete", "Microsoft.Compute/disks/delete", "Microsoft.Network/networkInterfaces/delete", "Microsoft.Network/publicIPAddresses/delete", "Microsoft.Network/networkSecurityGroups/securityRules/delete", "Microsoft.Resources/subscriptions/resourceGroups/write", "Microsoft.Compute/virtualMachines/delete", "Microsoft.Network/networkSecurityGroups/write", "Microsoft.Network/networkSecurityGroups/join/action", "Microsoft.Compute/disks/write", "Microsoft.Network/networkInterfaces/write", "Microsoft.Network/virtualNetworks/read", "Microsoft.Network/publicIPAddresses/write", "Microsoft.Compute/virtualMachines/write", "Microsoft.Compute/virtualMachines/extensions/write", "Microsoft.Resources/deployments/read", "Microsoft.Network/networkSecurityGroups/read", "Microsoft.Network/publicIPAddresses/read", "Microsoft.Network/virtualNetworks/subnets/join/action", "Microsoft.Network/publicIPAddresses/join/action", "Microsoft.Network/networkInterfaces/join/action", "Microsoft.Storage/storageAccounts/read", "Microsoft.EventGrid/systemTopics/eventSubscriptions/write", "Microsoft.EventGrid/systemTopics/eventSubscriptions/read", "Microsoft.EventGrid/systemTopics/eventSubscriptions/delete", "Microsoft.EventGrid/systemTopics/eventSubscriptions/getFullUrl/action", "Microsoft.EventGrid/systemTopics/eventSubscriptions/getDeliveryAttributes/action", "Microsoft.EventGrid/systemTopics/read", "Microsoft.EventGrid/systemTopics/write", "Microsoft.EventGrid/systemTopics/delete", "Microsoft.EventGrid/eventSubscriptions/write", "Microsoft.Storage/storageAccounts/write", "Microsoft.MarketplaceOrdering/offertypes/publishers/offers/plans/agreements/read", "Microsoft.MarketplaceOrdering/offertypes/publishers/offers/plans/agreements/write", "Microsoft.Network/networkSecurityGroups/securityRules/read", "Microsoft.Network/networkSecurityGroups/read",
+
 ....
     ],
     "NotActions": [],
@@ -112,44 +66,42 @@ Asegúrese de que la cuenta de usuario de Azure que utiliza para implementar el 
     "IsCustom": "true"
 }
 ....
-Nota:
+====
+Los siguientes permisos solo son necesarios si planeas habilitar la link:task-creating-relationships.html["Configuración de sincronización continua"] en una relación de sincronización desde Azure a otra ubicación de almacenamiento en la nube:
 
-. Los siguientes permisos solo son necesarios si planea habilitar el https://docs.netapp.com/us-en/bluexp-copy-sync/task-creating-relationships.html#settings["Configuración de sincronización continua"] en una relación de sincronización de Azure a otra ubicación de almacenamiento en la nube:
-+
-** 'Microsoft.Storage/storageAccounts/read',
-** 'Microsoft.EventGrid/systemTopics/eventSubscriptions/write',
-** 'Microsoft.EventGrid/systemTopics/eventSubscriptions/leer',
-** 'Microsoft.EventGrid/systemTopics/eventSubscriptions/eliminar',
-** 'Microsoft.EventGrid/systemTopics/eventSubscriptions/getFullUrl/acción',
-** 'Microsoft.EventGrid/systemTopics/eventSubscriptions/getDeliveryAttributes/acción',
-** 'Microsoft.EventGrid/systemTopics/leer',
-** 'Microsoft.EventGrid/systemTopics/escritura',
-** 'Microsoft.EventGrid/systemTopics/eliminar',
-** 'Microsoft.EventGrid/eventSubscriptions/escritura',
-** 'Microsoft.Storage/storageAccounts/write'
+* 'Microsoft.Storage/storageAccounts/read',
+* 'Microsoft.EventGrid/systemTopics/eventSubscriptions/write',
+* 'Microsoft.EventGrid/systemTopics/eventSubscriptions/leer',
+* 'Microsoft.EventGrid/systemTopics/eventSubscriptions/eliminar',
+* 'Microsoft.EventGrid/systemTopics/eventSubscriptions/getFullUrl/acción',
+* 'Microsoft.EventGrid/systemTopics/eventSubscriptions/getDeliveryAttributes/acción',
+* 'Microsoft.EventGrid/systemTopics/leer',
+* 'Microsoft.EventGrid/systemTopics/escritura',
+* 'Microsoft.EventGrid/systemTopics/eliminar',
+* 'Microsoft.EventGrid/eventSubscriptions/escritura',
+* 'Microsoft.Storage/storageAccounts/write'
 
 
-+
-Además, el alcance asignable debe establecerse en el alcance de suscripción y *no* en el alcance del grupo de recursos si planea implementar sincronización continua en Azure.
+El ámbito asignable debe configurarse como ámbito de suscripción y *no* como ámbito de grupo de recursos si tienes previsto implementar la sincronización continua en Azure.
 
-. Los siguientes permisos solo son necesarios si planea elegir su propia seguridad para la creación del agente de datos:
-+
-** "Microsoft.Network/networkSecurityGroups/securityRules/read"
-** "Microsoft.Network/networkSecurityGroups/read"
+Los siguientes permisos solo son necesarios si planea elegir su propia seguridad para la creación del agente de datos:
+
+* 'Microsoft.Network/networkSecurityGroups/securityRules/read'
+* 'Microsoft.Network/networkSecurityGroups/read'
 
 
 
 
-
-
+[[authentication-method]]
 == Método de autenticación
 
-Al implementar el agente de datos, deberá elegir un método de autenticación para la máquina virtual: una contraseña o un par de claves pública-privada SSH.
+Al implementar el agente de datos, debes elegir un método de autenticación para la máquina virtual: una contraseña o un par de claves pública y privada SSH.
 
-Para obtener ayuda con la creación de un par de claves, consulte https://docs.microsoft.com/en-us/azure/virtual-machines/linux/mac-create-ssh-keys["Documentación de Azure: Crear y usar un par de claves públicas y privadas SSH para máquinas virtuales Linux en Azure"^] .
+Si necesitas ayuda para crear un par de claves, consulta link:https://docs.microsoft.com/en-us/azure/virtual-machines/linux/mac-create-ssh-keys["Documentación de Azure: Crear y usar un par de claves públicas y privadas SSH para máquinas virtuales Linux en Azure"^].
 
 
 
+[[create-the-data-broker]]
 == Crear el agente de datos
 
 Hay algunas formas de crear un nuevo corredor de datos.  Estos pasos describen cómo instalar un agente de datos en Azure cuando se crea una relación de sincronización.
@@ -211,6 +163,7 @@ Como se muestra en la URL, la URL de nuestra aplicación es \ https://cloudsync.
 ****
 
 
+[[details-about-the-data-broker-vm]]
 == Detalles sobre la máquina virtual del agente de datos
 
 Copiar y sincronizar crea un agente de datos en Azure mediante la siguiente configuración.

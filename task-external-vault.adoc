@@ -32,6 +32,7 @@ Ahora que todo está configurado, puedes enviar una llamada API para crear una r
 
 
 
+[[prepare-the-vault]]
 == Preparar la bóveda
 
 Necesitarás proporcionar Copiar y sincronizar con la URL de los secretos en tu bóveda.  Prepare la bóveda configurando esas URL.  Debe configurar URL para las credenciales para cada origen y destino en las relaciones de sincronización que planea crear.
@@ -48,6 +49,7 @@ Creds:: La URL debe terminar con _Creds_.
 
 
 
+[[examples]]
 === Ejemplos
 
 Los siguientes ejemplos muestran URL a secretos.
@@ -68,6 +70,7 @@ La ruta del prefijo es _/my-path/all-secrets/_, el ID de solicitud es _n32hcbnej
 
 
 
+[[prepare-the-data-broker-group]]
 == Preparar el grupo de intermediarios de datos
 
 Prepare el grupo de agentes de datos para obtener credenciales del almacén externo modificando el archivo de configuración local para cada agente de datos del grupo.
@@ -152,6 +155,7 @@ Espacio de nombres::
 
 
 
+[[example-for-aws-role-authentication]]
 === Ejemplo de autenticación de roles de AWS
 
 [source, json]
@@ -173,6 +177,7 @@ Espacio de nombres::
 ----
 
 
+[[example-for-gcp-iam-authentication]]
 === Ejemplo de autenticación gcp-iam
 
 [source, json]
@@ -202,6 +207,7 @@ Espacio de nombres::
 ----
 
 
+[[set-up-permissions-when-using-gcp-iam-authentication]]
 === Configurar permisos al usar la autenticación gcp-iam
 
 Si utiliza el método de autenticación _gcp-iam_, el agente de datos debe tener el siguiente permiso de GCP:
@@ -214,6 +220,7 @@ link:task-installing-gcp.html#permissions-required-for-the-service-account["Obte
 
 
 
+[[creating-a-new-sync-relationship-using-secrets-from-the-vault]]
 == Creación de una nueva relación de sincronización utilizando secretos del almacén
 
 Ahora que todo está configurado, puedes enviar una llamada API para crear una relación de sincronización que use tu bóveda para obtener los secretos.
@@ -235,6 +242,7 @@ Body: post relationship v2 body
 
 
 
+[[example]]
 === Ejemplo
 
 Ejemplo para la solicitud POST:
