@@ -109,7 +109,17 @@ image:screenshot_bucket_setup.gif["Esta captura de pantalla muestra la página d
 
 . [[Configuración]]En la página *Configuración*, defina cómo se sincronizan y mantienen los archivos y carpetas de origen en la ubicación de destino:
 +
-Cronograma:: Elija una programación recurrente para sincronizaciones futuras o desactive la programación de sincronización.  Puede programar una relación para sincronizar datos con una frecuencia de hasta 1 minuto.
+Cronograma:: Elige una programación periódica para futuras sincronizaciones o desactiva la programación de sincronización. Puedes programar una relación para que sincronice datos tan seguido como cada 1 minuto. Las programaciones también se pueden configurar con frecuencias horarias y diarias.
++
+--
+
+IMPORTANT: Al configurar la programación, debes introducir un valor para indicar cuándo *se iniciará automáticamente la próxima sincronización*. Copy and Sync utiliza *UTC*, no la hora local. Tenlo en cuenta a la hora de establecer la hora programada.
+
+--
+
+
+
+
 Tiempo de espera de sincronización:: Define si Copiar y sincronizar debe cancelar una sincronización de datos si la sincronización no se ha completado en la cantidad especificada de minutos, horas o días.
 Notificaciones:: Le permite elegir si desea recibir notificaciones de copia y sincronización en el Centro de notificaciones de la consola de NetApp .  Puede habilitar notificaciones para sincronizaciones de datos exitosas, fallidas y canceladas.
 Reintentos:: Define la cantidad de veces que Copiar y sincronizar debe volver a intentar sincronizar un archivo antes de omitirlo.
@@ -120,17 +130,17 @@ Esta configuración solo está disponible cuando se crea una relación de sincro
 
 Si habilita esta configuración, afectará otras funciones de la siguiente manera:
 
-** La programación de sincronización está deshabilitada.
-** Las siguientes configuraciones vuelven a sus valores predeterminados: Tiempo de espera de sincronización, Archivos modificados recientemente y Fecha de modificación.
-** Si S3 es la fuente, el filtro por tamaño estará activo solo en eventos de copia (no en eventos de eliminación).
-** Una vez creada la relación, solo puedes acelerarla o eliminarla.  No puedes cancelar sincronizaciones, modificar configuraciones ni ver informes.
+* La programación de sincronización está deshabilitada.
+* Las siguientes configuraciones vuelven a sus valores predeterminados: Tiempo de espera de sincronización, Archivos modificados recientemente y Fecha de modificación.
+* Si S3 es la fuente, el filtro por tamaño estará activo solo en eventos de copia (no en eventos de eliminación).
+* Una vez creada la relación, solo puedes acelerarla o eliminarla.  No puedes cancelar sincronizaciones, modificar configuraciones ni ver informes.
 +
 Es posible crear una relación de sincronización continua con un depósito externo.  Para ello siga estos pasos:
 
 +
-... Vaya a la consola de Google Cloud para el proyecto del depósito externo.
-... Vaya a *Almacenamiento en la nube > Configuración > Cuenta de servicio de almacenamiento en la nube*.
-... Actualice el archivo local.json:
+.. Vaya a la consola de Google Cloud para el proyecto del depósito externo.
+.. Vaya a *Almacenamiento en la nube > Configuración > Cuenta de servicio de almacenamiento en la nube*.
+.. Actualice el archivo local.json:
 +
 [source, json]
 ----
@@ -142,13 +152,13 @@ Es posible crear una relación de sincronización continua con un depósito exte
 }
 }
 ----
-... Reiniciar el agente de datos:
+.. Reiniciar el agente de datos:
 +
-.... sudo pm2 detener todo
-.... sudo pm2 start all
+... sudo pm2 detener todo
+... sudo pm2 start all
 
 
-... Cree una relación de sincronización continua con el depósito externo relevante.
+.. Cree una relación de sincronización continua con el depósito externo relevante.
 +
 
 NOTE: Un agente de datos utilizado para crear una relación de sincronización continua con un depósito externo no podrá crear otra relación de sincronización continua con un depósito en su proyecto.
@@ -165,8 +175,8 @@ Incluso si desmarca estos atributos, Copiar y sincronizar aún compara el origen
 
 Puede elegir habilitar o deshabilitar Copiar y sincronizar comparando los siguientes atributos:
 
-** *mtime*: La hora de la última modificación de un archivo.  Este atributo no es válido para directorios.
-** *uid*, *gid* y *mode*: Indicadores de permisos para Linux.
+* *mtime*: La hora de la última modificación de un archivo.  Este atributo no es válido para directorios.
+* *uid*, *gid* y *mode*: Indicadores de permisos para Linux.
 
 
 --
@@ -179,11 +189,11 @@ La copia de etiquetas se admite con relaciones de sincronización que incluyen A
 
 La copia de metadatos es compatible con relaciones "de nube a nube" entre cualquiera de los siguientes puntos finales:
 
-** AWS S3
-** Blob de Azure
-** Almacenamiento en la nube de Google
-** Almacenamiento de objetos en la nube de IBM
-** StorageGRID
+* AWS S3
+* Blob de Azure
+* Almacenamiento en la nube de Google
+* Almacenamiento de objetos en la nube de IBM
+* StorageGRID
 
 
 --
@@ -234,8 +244,8 @@ Tamaño del archivo:: Elija sincronizar todos los archivos independientemente de
 Fecha de modificación:: Elija todos los archivos independientemente de su última fecha de modificación, archivos modificados después de una fecha específica, antes de una fecha específica o entre un rango de tiempo.
 Fecha de creación:: Cuando un servidor SMB es la fuente, esta configuración le permite sincronizar archivos que se crearon después de una fecha específica, antes de una fecha específica o entre un rango de tiempo específico.
 ACL - Lista de control de acceso:: Copie solo ACL, solo archivos o ACL y archivos desde un servidor SMB habilitando una configuración cuando crea una relación o después de crear una relación.
-
-
++
+--
 . En la página *Etiquetas/Metadatos*, elija si desea guardar un par clave-valor como etiqueta en todos los archivos transferidos al bucket S3 o asignar un par clave-valor de metadatos en todos los archivos.
 +
 image:screenshot_relationship_tags.png["Una captura de pantalla que muestra la página Etiquetas/Metadatos al crear una relación de sincronización con Amazon S3."]
@@ -245,6 +255,9 @@ image:screenshot_relationship_tags.png["Una captura de pantalla que muestra la p
 TIP: Esta misma función está disponible al sincronizar datos con StorageGRID e IBM Cloud Object Storage.  Para Azure y Google Cloud Storage, solo está disponible la opción de metadatos.
 
 . Revise los detalles de la relación de sincronización y luego seleccione *Crear relación*.
+
+
+--
 
 
 *Resultado*

@@ -134,7 +134,17 @@ image:screenshot_sync_settings.png["Una captura de pantalla que muestra la confi
 [[deleteonsource]] Aquí hay una breve descripción de cada configuración:
 
 +
-Cronograma:: Elija una programación recurrente para sincronizaciones futuras o desactive la programación de sincronización.  Puede programar una relación para sincronizar datos con una frecuencia de hasta 1 minuto.
+Cronograma:: Elige una programación periódica para futuras sincronizaciones o desactiva la programación de sincronización. Puedes programar una relación para que sincronice datos tan seguido como cada 1 minuto. Las programaciones también se pueden configurar con frecuencias horarias y diarias.
++
+--
+
+IMPORTANT: Al configurar la programación, debes introducir un valor para indicar cuándo *se iniciará automáticamente la próxima sincronización*. Copy and Sync utiliza *UTC*, no la hora local. Tenlo en cuenta a la hora de establecer la hora programada.
+
+--
+
+
+
+
 Tiempo de espera de sincronización:: Define si Copiar y sincronizar debe cancelar una sincronización de datos si la sincronización no se ha completado en la cantidad especificada de minutos, horas o días.
 Notificaciones:: Le permite elegir si desea recibir notificaciones de copia y sincronización en el Centro de notificaciones de la consola de NetApp .  Puede habilitar notificaciones para sincronizaciones de datos exitosas, fallidas y canceladas.
 +
@@ -150,8 +160,8 @@ Incluso si desmarca estos atributos, Copiar y sincronizar aún compara el origen
 
 Puede elegir habilitar o deshabilitar Copiar y sincronizar comparando los siguientes atributos:
 
-** *mtime*: La hora de la última modificación de un archivo.  Este atributo no es válido para directorios.
-** *uid*, *gid* y *mode*: Indicadores de permisos para Linux.
+* *mtime*: La hora de la última modificación de un archivo.  Este atributo no es válido para directorios.
+* *uid*, *gid* y *mode*: Indicadores de permisos para Linux.
 
 
 --
@@ -203,9 +213,12 @@ Tamaño del archivo:: Elija sincronizar todos los archivos independientemente de
 Fecha de modificación:: Elija todos los archivos independientemente de su última fecha de modificación, archivos modificados después de una fecha específica, antes de una fecha específica o entre un rango de tiempo.
 Fecha de creación:: Cuando un servidor SMB es la fuente, esta configuración le permite sincronizar archivos que se crearon después de una fecha específica, antes de una fecha específica o entre un rango de tiempo específico.
 ACL - Lista de control de acceso:: Copie solo ACL, solo archivos o ACL y archivos desde un servidor SMB habilitando una configuración cuando crea una relación o después de crear una relación.
-
-
++
+--
 . Seleccione *Guardar configuración*.
+
+
+--
 
 
 .Resultado

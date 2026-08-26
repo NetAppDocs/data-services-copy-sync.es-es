@@ -1,0 +1,6 @@
+= 
+:allow-uri-read: 
+
+
+
+IMPORTANT: Al configurar la programación, debes introducir un valor para indicar cuándo *se iniciará automáticamente la próxima sincronización*. Copy and Sync utiliza *UTC*, no la hora local. Tenlo en cuenta a la hora de establecer la hora programada.
