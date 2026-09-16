@@ -4,7 +4,7 @@ permalink: concept-licensing.html
 keywords: licenses, licensing, subscriptions, annual subscription, paygo, hourly subscription, bluexp 
 summary: Hay dos formas de pagar las relaciones de sincronización una vez finalizada la prueba gratuita de 14 días.  La primera opción es suscribirse desde AWS o Azure con pago por uso o pago anual.  La segunda opción es comprar licencias directamente de NetApp. 
 ---
-= Descripción general de licencias para NetApp Copy and Sync
+= Conoce las licencias en NetApp Copy and Sync
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 

@@ -4,7 +4,7 @@ permalink: task-managing-reports.html
 keywords: reports, sync reports, NetApp Copy and Sync reports, report errors, path reports 
 summary: Cree y visualice informes para obtener información que pueda utilizar con la ayuda del personal de NetApp para ajustar la configuración de un agente de datos y mejorar el rendimiento. 
 ---
-= Cree y visualice informes para ajustar su configuración en NetApp Copy and Sync
+= Crea y consulta informes en NetApp Copy and Sync
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
