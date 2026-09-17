@@ -262,7 +262,7 @@ TIP: Esta misma función está disponible al sincronizar datos con StorageGRID e
 
 *Resultado*
 
-Copy and Sync comienza a sincronizar los datos entre el origen y el destino. Las estadísticas de sincronización sobre cuánto tiempo tardó la sincronización, si se detuvo y cuántos archivos se copiaron, escanearon o eliminaron están disponibles. Luego puedes gestionar tus link:task-managing-relationships.html["relaciones de sincronización"], link:task-managing-data-brokers.html["Gestione sus corredores de datos"] o link:task-managing-reports.html#creating-reports["Crea informes para optimizar tu rendimiento y configuración"].
+Copy and Sync comienza a sincronizar los datos entre el origen y el destino. Las estadísticas de sincronización sobre cuánto tiempo tardó la sincronización, si se detuvo y cuántos archivos se copiaron, escanearon o eliminaron están disponibles. Luego puedes gestionar tus link:task-managing-relationships.html["relaciones de sincronización"], link:task-managing-data-brokers.html["Gestione sus corredores de datos"] o link:task-managing-reports.html["Crea informes para optimizar tu rendimiento y configuración"].
 
 
 

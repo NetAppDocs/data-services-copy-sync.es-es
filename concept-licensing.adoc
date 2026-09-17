@@ -37,7 +37,7 @@ Copy and Sync solo admite suscripciones de Marketplace de **AWS** y **Azure**. L
 
 Con una suscripción de pago por hora, se le cobrará por hora según la cantidad de relaciones de sincronización que cree.
 
-* https://azuremarketplace.microsoft.com/en-us/marketplace/apps/netapp.cloud-sync-service?tab=PlansAndPrice["Ver precios en Azure"^]
+* https://marketplace.microsoft.com/en-us/product/netapp.cloud-sync-service?tab=PlansAndPrice["Ver precios en Azure"^]
 * https://aws.amazon.com/marketplace/pp/B01LZV5DUJ["Ver precios de pago por uso en AWS"^]
 
 
